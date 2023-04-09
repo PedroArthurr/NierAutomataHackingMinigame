@@ -11,25 +11,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private CustomParticles particles;
 
+    private bool canMove = true;
+
     private Vector2 moveInput;
     private Vector2 lookInput;
     private bool isFiring = false;
-    [SerializeField] private float fireRate = 0.5f; // taxa de disparo (em segundos)
-    private float nextFireTime = 0f; // momento do próximo disparo
+    [SerializeField] private float fireRate = 0.5f;
+    private float nextFireTime = 0f;
 
-    private void OnMove(InputValue value)
-    {
-        moveInput = value.Get<Vector2>();
-    }
+    public bool CanMove { set => canMove = value; }
 
-    private void OnLook(InputValue value)
-    {
-        lookInput = value.Get<Vector2>();
-    }
+    private void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
+
+    private void OnLook(InputValue value) => lookInput = value.Get<Vector2>();
 
     private void FixedUpdate()
     {
-        // Move the player in X and Z axis based on input
+        if (!canMove)
+            return;
+
         Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
         rb.AddForce(movement * moveSpeed, ForceMode.Impulse);
 
@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour
     }
     private void LateUpdate()
     {
-        // Rotate the player towards the position of the mouse
+        if (!canMove)
+            return;
+
         var mousePos = Mouse.current.position.ReadValue();
         Ray cameraRay = Camera.main.ScreenPointToRay(mousePos);
         Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
@@ -52,14 +54,17 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        // Disparar a bala
+        particles.alive = canMove;
+
+        if (!canMove)
+            return;
+
         if (Mouse.current.leftButton.isPressed && Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         }
 
-        // Atualizar o estado de disparo
         isFiring = Mouse.current.leftButton.isPressed;
     }
 }

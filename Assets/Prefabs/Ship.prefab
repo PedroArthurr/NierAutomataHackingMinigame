@@ -540,7 +540,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 9488
+  m_VersionIndex: 9524
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1184,7 +1184,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 9362
+  m_VersionIndex: 9398
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1668,7 +1668,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 9491
+  m_VersionIndex: 9530
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1760,12 +1760,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7569878578739013210}
   - component: {fileID: 7569878578739013206}
+  - component: {fileID: 7032946477752038386}
   - component: {fileID: 7569878578739013205}
   - component: {fileID: 7569878578739013204}
   - component: {fileID: 7805168503868790883}
+  - component: {fileID: 8923823768393404062}
   m_Layer: 3
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1882,6 +1884,24 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7032946477752038386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569878578739013211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561967c3daaee3643a9fea2056d1a61a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealth: 2
+  currentHealth: 0
+  shields:
+  - {fileID: 7569878577448488245}
+  - {fileID: 7569878578550601488}
+  controller: {fileID: 7569878578739013205}
 --- !u!114 &7569878578739013205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1894,7 +1914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43782ea1d753bc94887d6a14aca12e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 0.8
   rotateSpeed: 5
   bulletPrefab: {fileID: 5764442481454075734, guid: 10f2110b2f646b1499a1fc98e54fe4c2,
     type: 3}
@@ -1902,7 +1922,7 @@ MonoBehaviour:
   pivot: {fileID: 7569878578739013210}
   rb: {fileID: 7569878578739013204}
   particles: {fileID: 4041431229874524744}
-  fireRate: 0.2
+  fireRate: 0.13
 --- !u!54 &7569878578739013204
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1932,6 +1952,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.57
   m_Center: {x: 0, y: 0.44, z: 0}
+--- !u!135 &8923823768393404062
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7569878578739013211}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.58
+  m_Center: {x: 0, y: 0.44, z: 0}
 --- !u!1 &7569878578914598704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1956,7 +1989,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7569878578914598704}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.18129998, y: 1.127, z: 1.394}
+  m_LocalPosition: {x: 0.18129998, y: 0.95, z: 1.394}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4025,7 +4058,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1340
+  m_VersionIndex: 1376
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []

@@ -13,6 +13,7 @@ public class CustomParticles : MonoBehaviour
     [SerializeField] private int maxParticles = 100;
 
     public bool isMoving;
+    public bool alive;
 
     private float nextSpawnTime;
     private int particleCount;
@@ -34,6 +35,9 @@ public class CustomParticles : MonoBehaviour
 
     private void SpawnParticle()
     {
+        if (!alive)
+            return;
+
         if (!isMoving)
             return;
 
@@ -61,7 +65,7 @@ public class CustomParticles : MonoBehaviour
         float scale = Random.Range(0f, .25f);
 
         particle.transform.position = transform.position;
-        particle.transform.rotation = Quaternion.identity;
+        particle.transform.localEulerAngles = new Vector3 (Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
         particle.transform.localScale = new Vector3(scale, scale, scale);
         particle.SetActive(true);
 

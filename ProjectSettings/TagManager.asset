@@ -14,9 +14,9 @@ TagManager:
   - UI
   - Particle
   - Floor
-  - 
-  - 
-  - 
+  - Enemy
+  - Enemy/DestructableBullet
+  - Wall
   - 
   - 
   - 

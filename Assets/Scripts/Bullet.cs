@@ -1,34 +1,29 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 10f; // velocidade da bala
-    private Rigidbody rb;
+    public float speed = 10f;
+    public LayerMask ignoreLayers;
+    public LayerMask damageLayer;
+    [SerializeField] private Rigidbody rb;
 
-    void Start()
-    {
-        // obter a referência do Rigidbody
-        rb = GetComponent<Rigidbody>();
+    [SerializeField] private DamageDealer damageDealer;
 
-        // mover a bala na direção do eixo Z
-        rb.velocity = transform.forward * speed;
-
-        //Destroy(this.gameObject, 3);
-    }
+    void Start() => rb.velocity = transform.forward * speed;
 
     void Update()
     {
-        // verificar se a bala saiu da tela e destruí-la
         if (!GetComponent<Renderer>().isVisible)
         {
             Destroy(gameObject);
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    public IEnumerator DelayedDestroy()
     {
-        // destruir a bala quando colidir com outro objeto
-        if (other.gameObject.layer != 3 || other.gameObject.layer != 6)
+        yield return new WaitForEndOfFrame();
+        if (gameObject != null)
             Destroy(gameObject);
     }
 }
