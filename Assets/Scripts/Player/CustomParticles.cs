@@ -19,6 +19,9 @@ public class CustomParticles : MonoBehaviour
     private int particleCount;
     private List<GameObject> particles = new List<GameObject>();
 
+    // Define a range for the offset of the spawn position
+    [SerializeField] private float spawnOffsetRange = 0.2f;
+
     private void Update()
     {
         if (particleCount >= maxParticles)
@@ -41,52 +44,73 @@ public class CustomParticles : MonoBehaviour
         if (!isMoving)
             return;
 
-        GameObject particlePrefab = particlePrefabs[Random.Range(0, particlePrefabs.Length)];
-        GameObject particle = null;
-        
-        // Check if there's an available particle in the pool
-        for (int i = 0; i < particles.Count; i++)
+        int numParticles = Random.Range(1, 4); // Select a random number of particles to spawn (1 to 3)
+
+        for (int i = 0; i < numParticles; i++)
         {
-            if (!particles[i].activeInHierarchy)
+            GameObject particlePrefab = particlePrefabs[Random.Range(0, particlePrefabs.Length)];
+            GameObject particle = null;
+
+            // Check if there's an available particle in the pool
+            for (int j = 0; j < particles.Count; j++)
             {
-                particle = particles[i];
-                break;
+                if (!particles[j].activeInHierarchy)
+                {
+                    particle = particles[j];
+                    break;
+                }
             }
+
+            // If there's no available particle, create a new one
+            if (particle == null)
+            {
+                particle = Instantiate(particlePrefab, transform.position, Quaternion.identity);
+                particles.Add(particle);
+            }
+
+            // Define an offset position for the particle
+            Vector3 spawnOffset = new Vector3(Random.Range(-spawnOffsetRange, spawnOffsetRange), 0f, Random.Range(-spawnOffsetRange, spawnOffsetRange));
+
+            // Set the position and rotation of the particle
+            particle.transform.position = transform.position + spawnOffset;
+            //particle.transform.localEulerAngles = new Vector3(Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
+
+            // Set the scale of the particle
+            float scale = Random.Range(0f, .25f);
+            particle.transform.localScale = new Vector3(scale, scale, scale);
+
+            // Activate the particle
+            particle.SetActive(true);
+
+            // Set the velocity of the particle
+            float speed = Random.Range(minSpeed, maxSpeed);
+            Rigidbody rb = particle.GetComponent<Rigidbody>();
+            rb.velocity = transform.forward * speed;
+
+            // Disable the particle after its lifetime has expired
+            StartCoroutine(DisableParticle(particle, Random.Range(minLifetime, maxLifetime)));
         }
 
-        // If there's no available particle, create a new one
-        if (particle == null)
-        {
-            particle = Instantiate(particlePrefab, transform.position, Quaternion.identity);
-            particles.Add(particle);
-        }
-        float speed = Random.Range(minSpeed, maxSpeed);
-        float lifetime = Random.Range(minLifetime, maxLifetime);
-        float scale = Random.Range(0f, .25f);
-
-        particle.transform.position = transform.position;
-        particle.transform.localEulerAngles = new Vector3 (Random.Range(-180, 180), Random.Range(-180, 180), Random.Range(-180, 180));
-        particle.transform.localScale = new Vector3(scale, scale, scale);
-        particle.SetActive(true);
-
-        Rigidbody rb = particle.GetComponent<Rigidbody>();
-        rb.velocity = transform.forward * speed;
-
-        // Disable the particle after its lifetime has expired
-        StartCoroutine(DisableParticle(particle, lifetime));
-
-        particleCount++;
+        particleCount += numParticles;
     }
-
     private IEnumerator DisableParticle(GameObject particle, float lifetime)
     {
-        yield return new WaitForSeconds(lifetime);
+        float fadeOutTime = 1.0f; // tempo de fade out em segundos
+        float t = 0.0f;
+        Material mat = particle.GetComponent<Renderer>().material;
+        Color originalColor = mat.color;
 
-        // Check if the particle is still active before trying to disable it
-        if (particle != null && particle.activeInHierarchy)
+        while (t < fadeOutTime)
         {
-            particle.SetActive(false);
-            particleCount--;
+            t += Time.deltaTime;
+            float normalizedTime = t / fadeOutTime;
+            Color newColor = new Color(originalColor.r, originalColor.g, originalColor.b, Mathf.Lerp(1, 0, normalizedTime));
+            mat.color = newColor;
+            yield return null;
         }
+
+        // desativa a partícula
+        particle.SetActive(false);
+        particleCount--;
     }
 }

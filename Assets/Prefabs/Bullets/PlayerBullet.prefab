@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 734785309079971685}
   - component: {fileID: 5491148577297957988}
   - component: {fileID: -2934647140286613226}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,9 +229,6 @@ MonoBehaviour:
   ignoreLayers:
     serializedVersion: 2
     m_Bits: 0
-  damageLayer:
-    serializedVersion: 2
-    m_Bits: 0
   rb: {fileID: 6278009714821695838}
   damageDealer: {fileID: 0}
 --- !u!114 &-2934647140286613226
@@ -246,6 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0731ab5ad4bb0144798814db5d21f9de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: 1
   targetLayers:
     serializedVersion: 2
     m_Bits: 256

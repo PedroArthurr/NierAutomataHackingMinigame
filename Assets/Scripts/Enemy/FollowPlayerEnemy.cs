@@ -2,11 +2,9 @@ using UnityEngine;
 
 public class FollowPlayerEnemy : Enemy
 {
-    [SerializeField] private float shootInterval = 1f;
+    
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float stoppingDistance = 1.5f;
-
-    public float ShootInterval { get => shootInterval; }
     public Transform PlayerTransform { get => playerTransform; }
 
     protected override void Start()

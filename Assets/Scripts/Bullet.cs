@@ -1,14 +1,24 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(DamageDealer))]
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
     public LayerMask ignoreLayers;
-    public LayerMask damageLayer;
+
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private DamageDealer damageDealer;
+
+    private void Awake()
+    {
+        if (rb == null)
+            rb = GetComponent<Rigidbody>();
+        if (damageDealer == null)
+            damageDealer = GetComponent<DamageDealer>();
+    }
 
     void Start() => rb.velocity = transform.forward * speed;
 

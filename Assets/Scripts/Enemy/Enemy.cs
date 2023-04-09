@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent (typeof(Rigidbody))]
 public class Enemy : MonoBehaviour, IDamageable
 {
-    [SerializeField] private int baseHealth = 2;
+    [SerializeField] private int baseHealth = 10;
     [SerializeField] private int currentHealth;
 
     [SerializeField] private float speed = 5f;
