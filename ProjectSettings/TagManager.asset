@@ -18,8 +18,8 @@ TagManager:
   - Enemy/DestructableBullet
   - Wall
   - Player/Bullet
-  - 
-  - 
+  - Player/ForceField
+  - Enemy/Wall
   - 
   - 
   - 

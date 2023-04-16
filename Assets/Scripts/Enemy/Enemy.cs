@@ -39,20 +39,20 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
+        SendMessage("OnTakeDamage", SendMessageOptions.DontRequireReceiver);
         currentHealth -= 1;
-        print(currentHealth.ToString());
-        if (currentHealth == 1)
+        if (currentHealth < 1)
             Die();
     }
 
     private void Die()
     {
-
+        Destroy(this.gameObject);
     }
 }
 public enum Type
 {
     Shooter,
     Stalker,
-    Boss
+    Wall,
 }

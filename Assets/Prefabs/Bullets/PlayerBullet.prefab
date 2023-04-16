@@ -228,9 +228,11 @@ MonoBehaviour:
   speed: 10
   ignoreLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 9472
   rb: {fileID: 6278009714821695838}
   damageDealer: {fileID: 0}
+  collisionParticle: {fileID: 4434345959307195590, guid: 4f093f1967c98e4499ea31a975b6dc57,
+    type: 3}
 --- !u!114 &-2934647140286613226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,4 +248,4 @@ MonoBehaviour:
   bullet: 1
   targetLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 8448

@@ -5,7 +5,6 @@ public class DamageDealer : MonoBehaviour
     [SerializeField] private bool bullet = true;
 
     [SerializeField] private LayerMask targetLayers;
-    //public void DealDamage(IDamageable damageable) => damageable.TakeDamage();
 
     private void OnTriggerEnter(Collider other)
     {

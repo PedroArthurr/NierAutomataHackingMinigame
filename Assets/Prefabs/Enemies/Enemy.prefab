@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96bd81d52a225547926f386f9b17920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 2
+  baseHealth: 10
   currentHealth: 0
   speed: 2
   playerTransform: {fileID: 0}
