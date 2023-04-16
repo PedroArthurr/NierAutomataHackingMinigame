@@ -430,6 +430,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3666576321729355775}
   - component: {fileID: 3666576321729355768}
+  - component: {fileID: 2273090083360926155}
   m_Layer: 0
   m_Name: EnemyDeathParticles
   m_TagString: Untagged
@@ -477,3 +478,27 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2273090083360926155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666576321729355769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 000bcad60cabe354094151743f71676f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particlePrefabs:
+  - {fileID: 3897041469660263575, guid: 29be05c02f9947048a46ee4e7eb5ebd8, type: 3}
+  - {fileID: 6417929357798559293, guid: e9c47e304a6a68f4d8f342b3725e9d10, type: 3}
+  objectsPerIteration: 20
+  iterations: 5
+  initialRadius: 6
+  finalRadius: 12
+  minLifetime: 0.11
+  maxLifetime: 0.2
+  fadeDuration: 0.1
+  minSize: 0.1
+  maxSize: 0.25

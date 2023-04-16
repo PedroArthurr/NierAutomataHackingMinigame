@@ -2272,7 +2272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43782ea1d753bc94887d6a14aca12e94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0.8
+  moveSpeed: 1
   rotateSpeed: 5
   audioSource: {fileID: 542370883007228374}
   shotSound: {fileID: 8300000, guid: 469e418784fbd974c9489c001f70a750, type: 3}
