@@ -1,14 +1,31 @@
+using System.Collections;
 using UnityEngine;
 
-[RequireComponent (typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour, IDamageable
 {
+    [Header("General Settings")]
     [SerializeField] private int baseHealth = 10;
-    [SerializeField] private int currentHealth;
 
     [SerializeField] private float speed = 5f;
 
+    [Header("References")]
+    [SerializeField] private GameObject damageParticle;
+    [SerializeField] private GameObject deathParticle;
+
+    [Space]
+    [Header("Flash Settings")]
+    [SerializeField] private Color flashColor;
+    [SerializeField] private float flashTime = 0.05f;
+    private Material enemyMaterial;
+    private bool flashing;
+    [Space]
+
     private Type type = Type.Shooter;
+    private int currentHealth;
+
+    private bool canMove = true;
+    private bool canShoot = true;
 
     protected Rigidbody rb;
 
@@ -24,8 +41,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Update()
     {
-        Move();
-        if (Type == Type.Shooter)
+        if (canMove)
+            Move();
+        if (Type == Type.Shooter && canShoot)
         {
             Shoot();
         }
@@ -41,12 +59,66 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         SendMessage("OnTakeDamage", SendMessageOptions.DontRequireReceiver);
         currentHealth -= 1;
-        if (currentHealth < 1)
-            Die();
+        if (currentHealth == 0)
+            StartCoroutine(Die());
+
+        if (damageParticle)
+        {
+            var p = Instantiate(damageParticle, this.transform);
+            p.transform.position = new Vector3(transform.position.x, transform.position.y - .5f, transform.position.z);
+            Destroy(p, .5f);
+        }
+        StartCoroutine(FlashColor());
     }
 
-    private void Die()
+    private IEnumerator FlashColor()
     {
+        if (enemyMaterial == null)
+            enemyMaterial = GetComponent<MeshRenderer>().material;
+
+        if (flashing)
+            yield break;
+
+        flashing = true;
+        Color currentEmissionColor = enemyMaterial.GetColor("_EmissionColor");
+        float elapsedTime = 0f;
+        float duration = 0.1f;
+
+        while (elapsedTime < flashTime)
+        {
+            float t = elapsedTime / duration;
+            enemyMaterial.SetColor("_EmissionColor", Color.Lerp(currentEmissionColor, flashColor * Mathf.Pow(2, 2), t));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        elapsedTime = 0f;
+
+        while (elapsedTime < flashTime / 2)
+        {
+            float t = elapsedTime / duration;
+            enemyMaterial.SetColor("_EmissionColor", Color.Lerp(flashColor * Mathf.Pow(2, 2), currentEmissionColor, t));
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        enemyMaterial.SetColor("_EmissionColor", currentEmissionColor);
+        flashing = false;
+    }
+
+    private IEnumerator Die()
+    {
+        canMove = false;
+        canShoot = false;
+        if (deathParticle != null)
+        {
+            var p = Instantiate(deathParticle);
+            p.transform.position = this.transform.position;
+            Destroy(p, 1);
+
+            yield return new WaitForSeconds(.2f);
+        }
+       
         Destroy(this.gameObject);
     }
 }

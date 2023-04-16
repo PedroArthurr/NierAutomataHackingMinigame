@@ -3,8 +3,16 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [Space]
+    [Header("Settings")]
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float rotateSpeed = 5f;
+    [Space]
+    [Header("Sounds")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip shotSound;
+    [Space]
+    [Header("References")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private Transform pivot;
@@ -62,6 +70,10 @@ public class PlayerController : MonoBehaviour
         if (Mouse.current.leftButton.isPressed && Time.time >= nextFireTime)
         {
             nextFireTime = Time.time + fireRate;
+            if (audioSource == null)
+                GetComponent<AudioSource>();
+
+            audioSource.PlayOneShot(shotSound);
             Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         }
 

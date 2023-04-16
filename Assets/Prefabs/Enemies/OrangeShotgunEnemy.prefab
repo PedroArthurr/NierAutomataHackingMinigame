@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b14c1198b7c2ebe4da8b0de3e563e1ce, type: 2}
+  - {fileID: 2100000, guid: 55109e9eb4e66164cba9dab782505567, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,9 +127,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96bd81d52a225547926f386f9b17920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10
-  currentHealth: 0
+  baseHealth: 7
   speed: 2
+  damageParticle: {fileID: 4314545086881739814, guid: 3ae36491a6766eb42ae82a3e573d03d4,
+    type: 3}
+  deathParticle: {fileID: 3666576321729355769, guid: b2058387a573f7745b6595ba7b0ddf0f,
+    type: 3}
+  flashColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 0.03529412}
+  flashTime: 0.07
   playerTransform: {fileID: 0}
   stoppingDistance: 2
   shootingBehaviour: 2

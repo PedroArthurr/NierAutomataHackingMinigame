@@ -4,19 +4,23 @@ using UnityEngine;
 public class Player : MonoBehaviour, IDamageable
 {
     [SerializeField] private int baseHealth = 2;
-    [SerializeField] private int currentHealth;
+    [Header("References")]
     [SerializeField] private GameObject[] shields;
     [SerializeField] private GameObject bow;
     [SerializeField] private GameObject core;
+
     [Space]
     [SerializeField] private PlayerController controller;
     [Space]
     [SerializeField] private GameObject takeDamageParticles;
+    [Space]
+    [Header("Colors")]
     [SerializeField] private Color shipColor;
     [SerializeField] private Color coreColor;
 
     private bool canReceiveDamage = true;
     private float canReceiveDamageTime = 1.5f;
+    private int currentHealth;
 
     public int CurrentHealth { get => currentHealth; }
 
