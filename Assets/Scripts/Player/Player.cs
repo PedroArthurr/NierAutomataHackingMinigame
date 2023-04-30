@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour, IDamageable
 {
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour, IDamageable
     [Header("Colors")]
     [SerializeField] private Color shipColor;
     [SerializeField] private Color coreColor;
+    [Header("Events")]
+    [SerializeField] private UnityEvent deathEvent;
 
     private bool canReceiveDamage = true;
     private float canReceiveDamageTime = 1.5f;
@@ -64,11 +67,26 @@ public class Player : MonoBehaviour, IDamageable
         canReceiveDamage = true;
     }
 
+    [ContextMenu("Force death animation")]
     private void Die()
     {
+        bow.SetActive(false);
+        core.SetActive(false);
         controller.CanMove = false;
+        controller.Rb.freezeRotation = true;
+        canReceiveDamage = false;
+        var c = GetComponents<SphereCollider>();
+        foreach (var coll in c)
+            coll.enabled = false;
+        deathEvent?.Invoke();
+        StartCoroutine(OnDeath());  
     }
 
+    private IEnumerator OnDeath()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
     private IEnumerator FadeToBlack(GameObject obj)
     {
         Renderer[] renderers = obj.GetComponentsInChildren<Renderer>();

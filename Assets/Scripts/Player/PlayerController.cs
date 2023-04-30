@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private float nextFireTime = 0f;
 
     public bool CanMove { set => canMove = value; }
+    public Rigidbody Rb { get => rb; }
 
     private void OnMove(InputValue value) => moveInput = value.Get<Vector2>();
 
@@ -39,7 +40,7 @@ public class PlayerController : MonoBehaviour
             return;
 
         Vector3 movement = new Vector3(moveInput.x, 0f, moveInput.y);
-        rb.AddForce(movement * moveSpeed, ForceMode.Impulse);
+        Rb.AddForce(movement * moveSpeed, ForceMode.Impulse);
 
         particles.isMoving = moveInput != Vector2.zero;
     }

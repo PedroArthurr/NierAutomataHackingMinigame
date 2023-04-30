@@ -14,6 +14,13 @@ public class DeathParticleBurst : MonoBehaviour
     [SerializeField] private float fadeDuration = 0.5f;
     [SerializeField] private float minSize = 0.1f;
     [SerializeField] private float maxSize = 0.3f;
+    [SerializeField] private bool playOnAwake = false;
+
+    private void OnEnable()
+    {
+        if (playOnAwake)
+            Burst();
+    }
 
     private IEnumerator BurstCoroutine()
     {
