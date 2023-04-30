@@ -12,31 +12,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5314661a82792f4687a8e25001b9583, type: 3}
   m_Name: SoundList
   m_EditorClassIdentifier: 
-  sounds:
+  sfx:
   - audioName: player_shoot
-    type: 0
     clip: {fileID: 8300000, guid: 39c21f978a5f224489a7316acf224b08, type: 3}
-  - audioName: player_explode
-    type: 0
-    clip: {fileID: 8300000, guid: 5b2036751c15d7741be556f77d749cc8, type: 3}
   - audioName: player_hit
-    type: 0
     clip: {fileID: 8300000, guid: 1c79dd8374552494aab3352a32516ba0, type: 3}
   - audioName: player_hit2
-    type: 0
     clip: {fileID: 8300000, guid: 49646e50790e0af45a106c0afc793abf, type: 3}
   - audioName: player_explode
-    type: 0
     clip: {fileID: 8300000, guid: 5b2036751c15d7741be556f77d749cc8, type: 3}
-  - audioName: enemy_explode0
-    type: 0
-    clip: {fileID: 8300000, guid: 495839a2d6bac2046b259d1b99522821, type: 3}
-  - audioName: enemy_explode
-    type: 0
-    clip: {fileID: 8300000, guid: 4b93cf2a535dddc46b307c2e7c0f2cf9, type: 3}
-  - audioName: enemy_hit
-    type: 0
-    clip: {fileID: 8300000, guid: 51875feddb3de4a4d8311ca14815801d, type: 3}
   - audioName: enemy_shoot
-    type: 0
     clip: {fileID: 8300000, guid: 6c6056cadbc26904f83ba0a76574abf8, type: 3}
+  - audioName: enemy_hit
+    clip: {fileID: 8300000, guid: 51875feddb3de4a4d8311ca14815801d, type: 3}
+  - audioName: enemy_explode
+    clip: {fileID: 8300000, guid: 4b93cf2a535dddc46b307c2e7c0f2cf9, type: 3}
+  - audioName: enemy_explode0
+    clip: {fileID: 8300000, guid: 495839a2d6bac2046b259d1b99522821, type: 3}
+  - audioName: core_hit
+    clip: {fileID: 8300000, guid: fed2ca2ecaab7f244beedbc71dddf9b2, type: 3}
+  - audioName: core_hit_shield
+    clip: {fileID: 8300000, guid: 6644197082e825949b119bf01893ba22, type: 3}
+  - audioName: core_broken
+    clip: {fileID: 8300000, guid: baa0bdb4805f10f4e9d5f29d75920e72, type: 3}
+  - audioName: core_explode
+    clip: {fileID: 8300000, guid: 4864891e6bc16be469688c4567ab0445, type: 3}
+  bgm:
+  - musicName: City Ruins
+    music: {fileID: 8300000, guid: af376be7dc15ac5438b4c95ab6efd560, type: 3}
+  - musicName: Memories of Dust
+    music: {fileID: 8300000, guid: b9af1333a797d15418dcf8289c98b5a5, type: 3}
+  - musicName: Birth of a Wish
+    music: {fileID: 8300000, guid: e5bb2b86e35e8ca479b703f04e0df858, type: 3}
+  - musicName: Amusement Park
+    music: {fileID: 8300000, guid: cb1e46e0b16806549ae1c701e22c08de, type: 3}
+  - musicName: A Beautiful Song
+    music: {fileID: 8300000, guid: 1fceb16bd4bbec2418518860c78ed1ed, type: 3}
+  - musicName: End of the Unknown
+    music: {fileID: 8300000, guid: 4a32df9272bc935458ee7c6f103cd860, type: 3}
+  - musicName: Forest Kingdom
+    music: {fileID: 8300000, guid: 838385da837327d4ea62d38042e87794, type: 3}
+  - musicName: Dark Colossus - Kaiju
+    music: {fileID: 8300000, guid: 906739bc140d6ac47a547917e43ba942, type: 3}
+  - musicName: Wretched Weaponry
+    music: {fileID: 8300000, guid: 5e7bc9a4b899e394fb3a832c7de7670b, type: 3}
+  - musicName: Possessed by Disease
+    music: {fileID: 8300000, guid: 2c0ea1fe7e36afe4d971978281e640cd, type: 3}
+  - musicName: Dependent Weakling
+    music: {fileID: 8300000, guid: 84feb438242399d4990312d140f8ac78, type: 3}
+  - musicName: War & War
+    music: {fileID: 8300000, guid: 996d31bc514f04e48adb6a76ae13ac69, type: 3}
+  - musicName: Song of the Ancients - Atonement
+    music: {fileID: 8300000, guid: f56d6f3cd0b0083418e07f93f02f24a4, type: 3}
+  - musicName: The Tower
+    music: {fileID: 8300000, guid: f5a0f8d79a310b6499400dc9df47b249, type: 3}
+  - musicName: The Sound of the End
+    music: {fileID: 8300000, guid: d04d2b305a4766a4f9605e7a1d086bba, type: 3}
+  - musicName: Weight of the World
+    music: {fileID: 8300000, guid: 8f5e72854f5f95b4cbc0362316f4e485, type: 3}

@@ -13,27 +13,19 @@ public class ShooterEnemy : FollowPlayerEnemy
     {
         if (PlayerTransform == null)
             return;
-
-        //AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shotSound), .6f);
-
-        switch (shootingBehaviour)
+        if (Time.time - lastShootTime >= shootInterval)
         {
-            case ShootingBehaviour.SEMIAUTO:
-            case ShootingBehaviour.MACHINEGUN:
-                if (Time.time - lastShootTime >= shootInterval)
-                {
-                    Vector3 directionToPlayer = (PlayerTransform.position - transform.position).normalized;
-                    Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+            Vector3 directionToPlayer = (PlayerTransform.position - transform.position).normalized;
+            Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+            switch (shootingBehaviour)
+            {
+                case ShootingBehaviour.SEMIAUTO:
+                case ShootingBehaviour.MACHINEGUN:
                     Instantiate(bulletPrefabs[(int)bulletType], transform.position, rotationToPlayer);
                     lastShootTime = Time.time;
-                }
-                break;
+                    break;
 
-            case ShootingBehaviour.SHOTGUN:
-                if (Time.time - lastShootTime >= shootInterval)
-                {
-                    Vector3 directionToPlayer = (PlayerTransform.position - transform.position).normalized;
-                    Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer, Vector3.up);
+                case ShootingBehaviour.SHOTGUN:
                     int numberOfBullets = 3;
                     float[] angles = { -15f, 0f, 15f };
                     for (int i = 0; i < numberOfBullets; i++)
@@ -42,8 +34,10 @@ public class ShooterEnemy : FollowPlayerEnemy
                         Instantiate(bulletPrefabs[(int)bulletType], transform.position, rotation);
                     }
                     lastShootTime = Time.time;
-                }
-                break;
+
+                    break;
+            }
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shotSound), .1f);
         }
     }
 }

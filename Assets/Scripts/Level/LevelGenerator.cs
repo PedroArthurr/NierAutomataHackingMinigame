@@ -1,4 +1,3 @@
-//using UnityEngine.C;
 using UnityEngine;
 
 [ExecuteAlways]

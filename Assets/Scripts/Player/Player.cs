@@ -21,15 +21,15 @@ public class Player : MonoBehaviour, IDamageable
 
     [Space]
     [Header("Sounds")]
-    [SerializeField] private string shield1Sound;
-    [SerializeField] private string shield2Sound;
-    [SerializeField] private string deathSound;
+    [SerializeField] private string shield1SoundReference = "player_hit";
+    [SerializeField] private string shield2SoundReference = "player_hit2";
+    [SerializeField] private string deathSoundReference = "player_explode";
 
     [Header("Events")]
     [SerializeField] private UnityEvent deathEvent;
 
     private bool canReceiveDamage = true;
-    private float canReceiveDamageTime = 1.5f;
+    private float canReceiveDamageTime = 1.2f;
     private int currentHealth;
 
     public int CurrentHealth { get => currentHealth; }
@@ -57,7 +57,7 @@ public class Player : MonoBehaviour, IDamageable
     {
         if (currentHealth == 2)
         {
-            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shield1Sound), .6f);
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shield1SoundReference), .6f);
 
             shields[0].SetActive(false);
         }
@@ -65,12 +65,12 @@ public class Player : MonoBehaviour, IDamageable
         {
 
             shields[1].SetActive(false);
-            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shield2Sound), .6f);
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shield2SoundReference), .6f);
         }
         StartCoroutine(ImmortalTime());
 
         StartCoroutine(FadeToBlack(bow));
-        //StartCoroutine(FadeToBlack(coreColor''));
+
         if (shields[1] != null)
             StartCoroutine(FadeToBlack(shields[1]));
     }
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour, IDamageable
         foreach (var coll in c)
             coll.enabled = false;
         deathEvent?.Invoke();
-        AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(deathSound), .6f);
+        AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(deathSoundReference), .6f);
         StartCoroutine(OnDeath());  
     }
 
@@ -114,9 +114,8 @@ public class Player : MonoBehaviour, IDamageable
         {
             float t = (Time.time - startTime) / duration;
             foreach (Renderer r in renderers)
-            {
                 r.material.color = Color.Lerp(shipColor, Color.black, t);
-            }
+
             yield return null;
         }
 
@@ -127,9 +126,8 @@ public class Player : MonoBehaviour, IDamageable
         {
             float t = (Time.time - startTime) / duration;
             foreach (Renderer r in renderers)
-            {
                 r.material.color = Color.Lerp(Color.black, shipColor, t);
-            }
+
             yield return null;
         }
         takeDamageParticles.SetActive(false);

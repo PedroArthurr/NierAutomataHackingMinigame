@@ -1,34 +1,74 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SoundList", menuName = "ScriptableObjects/Game Sounds", order = 1)]
 public class GameSounds : ScriptableObject
 {
-    public List<GameSound> sounds = new List<GameSound>();
+    public List<SFX> sfx = new List<SFX>();
+    public List<BGM> bgm = new List<BGM>();
+
+    public Dictionary<string, AudioClip> sfxDictionary = new Dictionary<string, AudioClip>();
+
+    public Dictionary<string, AudioClip> bgmDictionary = new Dictionary<string, AudioClip>();
+
+    public void AddSound(string audioName, AudioClip clip)
+    {
+        if (!sfxDictionary.ContainsKey(audioName))
+            sfxDictionary.Add(audioName, clip);
+    }
 
     public AudioClip GetAudioClip(string audioName)
     {
-        foreach (GameSound sound in sounds)
-            if (sound.audioName == audioName)
-                return sound.clip;
-
-        Debug.LogError("Audio clip '" + audioName + "' not found.");
+        if (sfxDictionary.ContainsKey(audioName))
+            return sfxDictionary[audioName];
+        else
+            Debug.LogError("Audio clip '" + audioName + "' not found.");
         return null;
     }
 
+    public void AddMusic(string music, AudioClip clip)
+    {
+        if (!bgmDictionary.ContainsKey(music))
+            bgmDictionary.Add(music, clip);
+    }
+
+    public AudioClip GetMusic(string musicName)
+    {
+        if(bgmDictionary.ContainsKey(musicName))
+            return
+                bgmDictionary[musicName];
+        Debug.LogError("Music '" + musicName + "' not found.");
+        return null;
+    }
+
+    [ContextMenu("Set Names")]
+    public void SetNames()
+    {
+        foreach(var s in sfx)
+            s.SetName();
+    }
 }
 
 [System.Serializable]
-public struct GameSound
+public class SFX
 {
     public string audioName;
-    public SoundType type;
     public AudioClip clip;
+
+    public void SetName()
+    {
+        audioName = clip.name;
+    }
 }
-public enum SoundType
+
+[System.Serializable]
+public class BGM
 {
-    SFX,
-    BGM,
-    Menu
+    public string musicName;
+    public AudioClip music;
+
+    public void SetName()
+    {
+        musicName = music.name;
+    }
 }
