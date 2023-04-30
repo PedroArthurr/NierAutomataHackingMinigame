@@ -14,6 +14,8 @@ public class ShooterEnemy : FollowPlayerEnemy
         if (PlayerTransform == null)
             return;
 
+        //AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shotSound), .6f);
+
         switch (shootingBehaviour)
         {
             case ShootingBehaviour.SEMIAUTO:

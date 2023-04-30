@@ -18,6 +18,13 @@ public class Player : MonoBehaviour, IDamageable
     [Header("Colors")]
     [SerializeField] private Color shipColor;
     [SerializeField] private Color coreColor;
+
+    [Space]
+    [Header("Sounds")]
+    [SerializeField] private string shield1Sound;
+    [SerializeField] private string shield2Sound;
+    [SerializeField] private string deathSound;
+
     [Header("Events")]
     [SerializeField] private UnityEvent deathEvent;
 
@@ -49,9 +56,17 @@ public class Player : MonoBehaviour, IDamageable
     private void DestroyShield()
     {
         if (currentHealth == 2)
+        {
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shield1Sound), .6f);
+
             shields[0].SetActive(false);
+        }
         else if (currentHealth == 1)
+        {
+
             shields[1].SetActive(false);
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shield2Sound), .6f);
+        }
         StartCoroutine(ImmortalTime());
 
         StartCoroutine(FadeToBlack(bow));
@@ -79,6 +94,7 @@ public class Player : MonoBehaviour, IDamageable
         foreach (var coll in c)
             coll.enabled = false;
         deathEvent?.Invoke();
+        AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(deathSound), .6f);
         StartCoroutine(OnDeath());  
     }
 

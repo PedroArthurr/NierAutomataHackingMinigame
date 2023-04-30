@@ -128,7 +128,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealth: 10
-  currentHealth: 0
+  isWall: 1
   speed: 5
   damageParticle: {fileID: 0}
+  deathParticle: {fileID: 0}
+  shotSound: enemy_shoot
+  hitSound: enemy_hit
+  deathSound: enemy_explode0
+  deathSound2: enemy_explode
   flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 0.05

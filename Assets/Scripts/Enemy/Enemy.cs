@@ -9,9 +9,18 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] private float speed = 5f;
 
+    [SerializeField] private bool isWall;
+
     [Header("References")]
     [SerializeField] private GameObject damageParticle;
     [SerializeField] private GameObject deathParticle;
+
+    [Space]
+    [Header("Sounds")]
+    [SerializeField] protected string shotSound = "enemy_shoot";
+    [SerializeField] protected string hitSound = "enemy_hit";
+    [SerializeField] protected string deathSound = "enemy_explode0";
+    [SerializeField] protected string deathSound2 = "enemy_explode";
 
     [Space]
     [Header("Flash Settings")]
@@ -58,6 +67,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public void TakeDamage()
     {
         SendMessage("OnTakeDamage", SendMessageOptions.DontRequireReceiver);
+        if (!isWall)
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(hitSound), .4f);
         currentHealth -= 1;
         if (currentHealth == 0)
             StartCoroutine(Die());
@@ -118,7 +129,9 @@ public class Enemy : MonoBehaviour, IDamageable
 
             yield return new WaitForSeconds(.2f);
         }
-       
+        if (!isWall)
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(deathSound2), .3f);
+
         Destroy(this.gameObject);
     }
 }

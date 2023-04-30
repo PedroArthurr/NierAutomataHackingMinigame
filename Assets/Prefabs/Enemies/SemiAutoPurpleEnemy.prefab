@@ -133,6 +133,10 @@ MonoBehaviour:
     type: 3}
   deathParticle: {fileID: 3666576321729355769, guid: b2058387a573f7745b6595ba7b0ddf0f,
     type: 3}
+  shotSound: enemy_shoot
+  hitSound: enemy_hit
+  deathSound: enemy_explode0
+  deathSound2: enemy_explode
   flashColor: {r: 0.03773582, g: 0.03773582, b: 0.03773582, a: 0.03529412}
   flashTime: 0.07
   playerTransform: {fileID: 0}

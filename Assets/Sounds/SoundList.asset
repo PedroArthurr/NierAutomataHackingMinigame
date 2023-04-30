@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5314661a82792f4687a8e25001b9583, type: 3}
+  m_Name: SoundList
+  m_EditorClassIdentifier: 
+  sounds:
+  - audioName: player_shoot
+    type: 0
+    clip: {fileID: 8300000, guid: 39c21f978a5f224489a7316acf224b08, type: 3}
+  - audioName: player_explode
+    type: 0
+    clip: {fileID: 8300000, guid: 5b2036751c15d7741be556f77d749cc8, type: 3}
+  - audioName: player_hit
+    type: 0
+    clip: {fileID: 8300000, guid: 1c79dd8374552494aab3352a32516ba0, type: 3}
+  - audioName: player_hit2
+    type: 0
+    clip: {fileID: 8300000, guid: 49646e50790e0af45a106c0afc793abf, type: 3}
+  - audioName: player_explode
+    type: 0
+    clip: {fileID: 8300000, guid: 5b2036751c15d7741be556f77d749cc8, type: 3}
+  - audioName: enemy_explode0
+    type: 0
+    clip: {fileID: 8300000, guid: 495839a2d6bac2046b259d1b99522821, type: 3}
+  - audioName: enemy_explode
+    type: 0
+    clip: {fileID: 8300000, guid: 4b93cf2a535dddc46b307c2e7c0f2cf9, type: 3}
+  - audioName: enemy_hit
+    type: 0
+    clip: {fileID: 8300000, guid: 51875feddb3de4a4d8311ca14815801d, type: 3}
+  - audioName: enemy_shoot
+    type: 0
+    clip: {fileID: 8300000, guid: 6c6056cadbc26904f83ba0a76574abf8, type: 3}
