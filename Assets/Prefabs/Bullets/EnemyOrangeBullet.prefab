@@ -129,9 +129,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  ignoreLayers:
+  interactionLayers:
     serializedVersion: 2
-    m_Bits: 832
+    m_Bits: 17216
   rb: {fileID: 5679882468210596149}
   damageDealer: {fileID: 6013420455142502511, guid: 6cf2c8e9542ba6649a500371626d7720,
     type: 3}

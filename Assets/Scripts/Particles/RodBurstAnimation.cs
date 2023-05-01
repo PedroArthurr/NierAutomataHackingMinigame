@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDeathParticleAnimation : MonoBehaviour
+public class RodBurstAnimation : MonoBehaviour
 {
     public GameObject prefab;
     public int numberOfParticles = 40;

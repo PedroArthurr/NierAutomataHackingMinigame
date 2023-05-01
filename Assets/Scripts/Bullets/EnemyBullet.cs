@@ -8,7 +8,7 @@ public class EnemyBullet : Bullet
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!ignoreLayers.HasLayer(other.gameObject.layer))
+        if (!interactionLayers.HasLayer(other.gameObject.layer))
             StartCoroutine(DelayedDestroy());
     }
 }

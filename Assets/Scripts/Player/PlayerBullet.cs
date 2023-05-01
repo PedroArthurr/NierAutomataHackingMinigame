@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerBullet : Bullet
 {
     [SerializeField] private GameObject collisionParticle;
-
+ 
     public void OnTriggerEnter(Collider other)
     {
-        if (ignoreLayers.HasLayer(other.gameObject.layer))
+        if (interactionLayers.HasLayer(other.gameObject.layer))
         {
             var p = Instantiate(collisionParticle);
             p.transform.position = this.transform.position;

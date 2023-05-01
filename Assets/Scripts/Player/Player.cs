@@ -101,6 +101,7 @@ public class Player : MonoBehaviour, IDamageable
     private IEnumerator OnDeath()
     {
         yield return new WaitForSeconds(2f);
+        SceneLoader.instance.ReloadScene();
         Destroy(gameObject);
     }
     private IEnumerator FadeToBlack(GameObject obj)

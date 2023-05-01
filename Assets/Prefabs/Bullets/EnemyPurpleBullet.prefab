@@ -130,9 +130,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  ignoreLayers:
+  interactionLayers:
     serializedVersion: 2
-    m_Bits: 2880
+    m_Bits: 19264
   rb: {fileID: 1447935169643294837}
   damageDealer: {fileID: 0}
   destructable: 0

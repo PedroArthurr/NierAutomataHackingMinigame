@@ -9,11 +9,10 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] private float speed = 5f;
 
-    [SerializeField] private bool isWall;
-
     [Header("References")]
     [SerializeField] private GameObject damageParticle;
     [SerializeField] private GameObject deathParticle;
+    [SerializeField] private EnemyShield shield;
 
     [Space]
     [Header("Sounds")]
@@ -36,6 +35,9 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool canMove = true;
     private bool canShoot = true;
 
+    protected AudioClip shot;
+    protected AudioClip hit;
+
     protected Rigidbody rb;
 
     public int BaseHealth { get => baseHealth; set => baseHealth = value; }
@@ -46,6 +48,8 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         rb = GetComponent<Rigidbody>();
         currentHealth = baseHealth;
+        hit = AudioManager.instance.sounds.GetAudioClip(hitSound);
+        shot = AudioManager.instance.sounds.GetAudioClip(shotSound);
     }
 
     protected virtual void Update()
@@ -66,9 +70,12 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
+        if (shield != null)
+            return;
+
         SendMessage("OnTakeDamage", SendMessageOptions.DontRequireReceiver);
-        if (!isWall)
-            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(hitSound), .4f);
+
+        AudioManager.instance.PlaySound(hit, .4f);
         currentHealth -= 1;
         if (currentHealth == 0)
             StartCoroutine(Die());
@@ -123,17 +130,25 @@ public class Enemy : MonoBehaviour, IDamageable
         canShoot = false;
         if (deathParticle != null)
         {
+            GameManager.Instance.enemiesController.OnDestroyEnemy(this);
             var p = Instantiate(deathParticle);
             p.transform.position = this.transform.position;
             Destroy(p, 1);
 
             yield return new WaitForSeconds(.2f);
         }
-        if (!isWall)
-            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(deathSound2), .3f);
+
+        AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(deathSound2), .3f);
 
         Destroy(this.gameObject);
     }
+
+    public void DestroyShield()
+    {
+        if (shield != null)
+            shield.Remove();
+    }
+
 }
 public enum Type
 {

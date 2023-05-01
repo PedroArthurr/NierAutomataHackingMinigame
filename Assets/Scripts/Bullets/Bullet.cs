@@ -1,12 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(DamageDealer))]
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
-    public LayerMask ignoreLayers;
+    [FormerlySerializedAs("ignoreLayers")]
+    public LayerMask interactionLayers;
 
     [SerializeField] private Rigidbody rb;
 
