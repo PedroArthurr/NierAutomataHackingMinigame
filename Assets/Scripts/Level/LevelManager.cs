@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -28,12 +27,18 @@ public class LevelManager : MonoBehaviour
 
     public IEnumerator NextLevel()
     {
-        currentLevelName = levelList.GetNextLevel(currentLevelName);
         PlayerPrefs.SetString(Consts.CURRENT_LEVEL, currentLevelName);
         PlayerPrefs.Save();
         Debug.Log("Waiting for reload the scene");
-        yield return new WaitForSeconds(2.5f);
-        Debug.Log("Reloading the scene with the new level - " +  currentLevelName);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        yield return new WaitForSeconds(4f);
+
+        if (currentLevelName == Consts.END_GAME || PlayerPrefs.GetInt(Consts.PLAY_ONE_SHOT) == 1)
+            SceneLoader.instance.LoadScene(Consts.MENU);
+        else
+        {
+            currentLevelName = levelList.GetNextLevel(currentLevelName);
+            Debug.Log("Reloading the scene with the new level - " + currentLevelName);
+            SceneLoader.instance.ReloadScene();
+        }
     }
 }

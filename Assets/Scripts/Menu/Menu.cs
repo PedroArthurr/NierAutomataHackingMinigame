@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
-    // Start is called before the first frame update
     void Start()
     {
-        SceneLoader.instance.LoadScene(1);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        PlayerPrefs.SetInt(Consts.PLAY_ONE_SHOT, 1);
+        SceneLoader.instance.LoadScene(Consts.GAME);
     }
 }

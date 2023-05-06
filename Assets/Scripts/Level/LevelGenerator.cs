@@ -1,7 +1,5 @@
-using System.Collections;
 using UnityEngine;
 
-[ExecuteAlways]
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private ColorToPrefab[] prefabs;
@@ -11,7 +9,8 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        Generate(LevelManager.instance.GetLevel());
+        if (Application.isPlaying)
+            Generate(LevelManager.instance.GetLevel());
     }
 
     public void Generate(Texture2D map)

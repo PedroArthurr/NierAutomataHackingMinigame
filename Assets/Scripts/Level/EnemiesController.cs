@@ -25,7 +25,7 @@ public class EnemiesController : MonoBehaviour
                     e.DestroyShield();
             }
             if(shieldEnemies.Count == 0)
-                UIManager.instance.SetGameOver();
+                UIManager.instance.SetGameOver(true);
         }
     }
 }

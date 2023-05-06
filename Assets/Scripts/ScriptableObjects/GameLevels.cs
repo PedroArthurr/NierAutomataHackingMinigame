@@ -40,13 +40,13 @@ public class GameLevels : ScriptableObject
             else
             {
                 Debug.Log("No more levels");
-                return default;
+                return Consts.END_GAME;
             }
         }
         else
         {
             Debug.LogError("Level not found");
-            return default;
+            return Consts.END_GAME;
         }
     }
 }

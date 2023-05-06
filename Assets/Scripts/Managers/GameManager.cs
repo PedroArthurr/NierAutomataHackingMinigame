@@ -23,9 +23,10 @@ public class GameManager : MonoBehaviour
         playerController = FindObjectOfType<PlayerController>();
     }
 
-    public void OnGameOver()
+    public void OnFinishLevel(bool win)
     {
         playerController.CanMove = false;
-        StartCoroutine(LevelManager.instance.NextLevel());
+        if (win)
+            StartCoroutine(LevelManager.instance.NextLevel());
     }
 }
