@@ -14,6 +14,8 @@ public class EnemiesController : MonoBehaviour
     {
         if (enemies.Contains(d))
             enemies.Remove(d);
+        if (shieldEnemies.Contains(d))
+            shieldEnemies.Remove(d);
 
         if (enemies.Count == 0)
         {
@@ -22,10 +24,8 @@ public class EnemiesController : MonoBehaviour
                 foreach (var e in shieldEnemies)
                     e.DestroyShield();
             }
-            else if (shieldEnemies.Count == 0)
-            {
-                //Game Over
-            }
+            if(shieldEnemies.Count == 0)
+                UIManager.instance.SetGameOver();
         }
     }
 }

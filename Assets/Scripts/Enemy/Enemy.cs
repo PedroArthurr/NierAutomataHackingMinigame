@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Enemy : MonoBehaviour, IDamageable
@@ -29,7 +30,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private bool flashing;
     [Space]
 
-    private Type type = Type.Shooter;
+    private Enums.EnemyType type = Enums.EnemyType.Shooter;
     private int currentHealth;
 
     private bool canMove = true;
@@ -42,7 +43,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public int BaseHealth { get => baseHealth; set => baseHealth = value; }
     public float Speed { get => speed; }
-    public Type Type { get => type; }
+    public Enums.EnemyType Type { get => type; }
 
     protected virtual void Start()
     {
@@ -56,7 +57,7 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         if (canMove)
             Move();
-        if (Type == Type.Shooter && canShoot)
+        if (Type == Enums.EnemyType.Shooter && canShoot)
         {
             Shoot();
         }
@@ -130,7 +131,7 @@ public class Enemy : MonoBehaviour, IDamageable
         canShoot = false;
         if (deathParticle != null)
         {
-            GameManager.Instance.enemiesController.OnDestroyEnemy(this);
+            GameManager.instance.enemiesController.OnDestroyEnemy(this);
             var p = Instantiate(deathParticle);
             p.transform.position = this.transform.position;
             Destroy(p, 1);
@@ -149,10 +150,4 @@ public class Enemy : MonoBehaviour, IDamageable
             shield.Remove();
     }
 
-}
-public enum Type
-{
-    Shooter,
-    Stalker,
-    Wall,
 }

@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     private bool isFiring = false;
     [SerializeField] private float fireRate = 0.5f;
     private float nextFireTime = 0f;
+    private Vector3 lastLookPos;
 
     public bool CanMove { set => canMove = value; }
     public Rigidbody Rb { get => rb; }
@@ -52,16 +53,21 @@ public class PlayerController : MonoBehaviour
     private void LateUpdate()
     {
         if (!canMove)
+        {
+            pivot.LookAt(lastLookPos);
             return;
+        }
+            
 
         var mousePos = Mouse.current.position.ReadValue();
         Ray cameraRay = Camera.main.ScreenPointToRay(mousePos);
-        Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+        Plane groundPlane = new(Vector3.up, Vector3.zero);
 
         if (groundPlane.Raycast(cameraRay, out float rayLength))
         {
             Vector3 pointToLook = cameraRay.GetPoint(rayLength);
-            pivot.LookAt(new Vector3(pointToLook.x, pivot.position.y, pointToLook.z));
+            lastLookPos = new Vector3(pointToLook.x, pivot.position.y, pointToLook.z);
+            pivot.LookAt(lastLookPos);
         }
 
     }

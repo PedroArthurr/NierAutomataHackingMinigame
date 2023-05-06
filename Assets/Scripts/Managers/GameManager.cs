@@ -1,20 +1,31 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static GameManager instance;
+
     [SerializeField] private LevelGenerator levelGenerator;
     public EnemiesController enemiesController;
 
-    private void Awake()
+    private PlayerController playerController;
+
+    private void Awake() => instance = this;
+
+    private IEnumerator Start()
     {
-        Instance = this;
+        yield return new WaitForEndOfFrame();
+        GetReferences();
     }
 
-    private void Start()
+    public void GetReferences()
     {
-        levelGenerator.GenerateLevel();
+        playerController = FindObjectOfType<PlayerController>();
+    }
+
+    public void OnGameOver()
+    {
+        playerController.CanMove = false;
+        StartCoroutine(LevelManager.instance.NextLevel());
     }
 }

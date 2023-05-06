@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class ShooterEnemy : FollowPlayerEnemy
 {
-    [SerializeField] private ShootingBehaviour shootingBehaviour;
-    [SerializeField] private BulletTypes bulletType;
+    [SerializeField] private Enums.ShootingBehaviour shootingBehaviour;
+    [SerializeField] private Enums.BulletTypes bulletType;
     [SerializeField] private GameObject[] bulletPrefabs;
     [SerializeField] private float shootInterval = 1f;
 
@@ -19,13 +19,13 @@ public class ShooterEnemy : FollowPlayerEnemy
             Quaternion rotationToPlayer = Quaternion.LookRotation(directionToPlayer, Vector3.up);
             switch (shootingBehaviour)
             {
-                case ShootingBehaviour.SEMIAUTO:
-                case ShootingBehaviour.MACHINEGUN:
+                case Enums.ShootingBehaviour.SEMIAUTO:
+                case Enums.ShootingBehaviour.MACHINEGUN:
                     Instantiate(bulletPrefabs[(int)bulletType], transform.position, rotationToPlayer);
                     lastShootTime = Time.time;
                     break;
 
-                case ShootingBehaviour.SHOTGUN:
+                case Enums.ShootingBehaviour.SHOTGUN:
                     int numberOfBullets = 3;
                     float[] angles = { -15f, 0f, 15f };
                     for (int i = 0; i < numberOfBullets; i++)
@@ -40,17 +40,4 @@ public class ShooterEnemy : FollowPlayerEnemy
             AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shotSound), .1f);
         }
     }
-}
-
-public enum ShootingBehaviour
-{
-    SEMIAUTO,
-    MACHINEGUN,
-    SHOTGUN,
-}
-
-public enum BulletTypes
-{
-    PURPLE,
-    ORANGE,
 }

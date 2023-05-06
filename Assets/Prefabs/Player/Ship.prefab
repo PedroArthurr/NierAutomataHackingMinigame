@@ -2679,9 +2679,9 @@ MonoBehaviour:
   takeDamageParticles: {fileID: 7712983960484116010}
   shipColor: {r: 0.93333334, g: 0.92156863, b: 0.85882354, a: 1}
   coreColor: {r: 0.16078432, g: 0.15294118, b: 0.14117648, a: 1}
-  shield1Sound: player_hit
-  shield2Sound: player_hit2
-  deathSound: player_explode
+  shield1SoundReference: player_hit
+  shield2SoundReference: player_hit2
+  deathSoundReference: player_explode
   deathEvent:
     m_PersistentCalls:
       m_Calls:
@@ -2710,15 +2710,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.25
-  rotateSpeed: 5
-  shotSound: player_shoot
+  shotSoundReference: player_shoot
   bulletPrefab: {fileID: 5764442481454075734, guid: 10f2110b2f646b1499a1fc98e54fe4c2,
     type: 3}
   bulletSpawnPoint: {fileID: 7569878578914598707}
   pivot: {fileID: 7569878578739013210}
   rb: {fileID: 7569878578739013204}
   particles: {fileID: 4041431229874524744}
-  fireRate: 0.13
+  fireRate: 0.11
 --- !u!54 &7569878578739013204
 Rigidbody:
   m_ObjectHideFlags: 0

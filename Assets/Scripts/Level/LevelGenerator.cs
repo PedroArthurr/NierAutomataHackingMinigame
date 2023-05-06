@@ -1,14 +1,22 @@
+using System.Collections;
 using UnityEngine;
 
 [ExecuteAlways]
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private ColorToPrefab[] prefabs;
-    [SerializeField] private Texture2D map;
-    private Vector3 middle;
 
-    public void GenerateLevel()
+    private Vector3 middle;
+    private Texture2D currentMap;
+
+    private void Start()
     {
+        Generate(LevelManager.instance.GetLevel());
+    }
+
+    public void Generate(Texture2D map)
+    {
+        currentMap = map;
         middle = new Vector3(map.width / 2, 0, map.height / 2);
         for (int x = 0; x < map.width; x++)
             for (int z = 0; z < map.height; z++)
@@ -17,7 +25,7 @@ public class LevelGenerator : MonoBehaviour
 
     private void GenerateTile(int x, int z)
     {
-        Color pixelColor = map.GetPixel(x, z);
+        Color pixelColor = currentMap.GetPixel(x, z);
         if (pixelColor.a <= 0)
             return;
         foreach (var p in prefabs)
@@ -29,10 +37,10 @@ public class LevelGenerator : MonoBehaviour
                 if (p.prefab != null)
                 {
                     var i = Instantiate(p.prefab, position, Quaternion.identity);
-                    if (p.type == LevelPrefabType.Enemy)
-                        GameManager.Instance.enemiesController.AddEnemy(i.GetComponent<Enemy>());
-                    else if (p.type == LevelPrefabType.ShieldEnemy)
-                        GameManager.Instance.enemiesController.AddShieldEnemy(i.GetComponent<Enemy>());
+                    if (p.type == Enums.LevelPrefabType.Enemy)
+                        GameManager.instance.enemiesController.AddEnemy(i.GetComponent<Enemy>());
+                    else if (p.type == Enums.LevelPrefabType.ShieldEnemy)
+                        GameManager.instance.enemiesController.AddShieldEnemy(i.GetComponent<Enemy>());
                 }
 
             }
@@ -51,7 +59,7 @@ public class ColorToPrefab
 {
     public GameObject prefab;
     public Color color;
-    public LevelPrefabType type;
+    public Enums.LevelPrefabType type;
     [SerializeField] private string hex;
     public string Hex
     {
@@ -62,20 +70,11 @@ public class ColorToPrefab
         }
         set
         {
-            Color newColor;
-            if (UnityEngine.ColorUtility.TryParseHtmlString(value, out newColor))
+            if (ColorUtility.TryParseHtmlString(value, out Color newColor))
             {
                 color = newColor;
                 hex = value;
             }
         }
     }
-}
-
-public enum LevelPrefabType
-{
-    Level = 0,
-    Player = 1,
-    Enemy = 2,
-    ShieldEnemy = 3,
 }

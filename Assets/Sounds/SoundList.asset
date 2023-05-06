@@ -37,6 +37,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: baa0bdb4805f10f4e9d5f29d75920e72, type: 3}
   - audioName: core_explode
     clip: {fileID: 8300000, guid: 4864891e6bc16be469688c4567ab0445, type: 3}
+  - audioName: game_over
+    clip: {fileID: 8300000, guid: 72b25b1c54560b54c8167d22b852d481, type: 3}
   bgm:
   - musicName: City Ruins
     music: {fileID: 8300000, guid: af376be7dc15ac5438b4c95ab6efd560, type: 3}
