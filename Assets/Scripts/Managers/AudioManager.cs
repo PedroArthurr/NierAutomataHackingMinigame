@@ -10,6 +10,9 @@ public class AudioManager : MonoBehaviour
     public AudioMixerGroup sfxGroup;
     public AudioMixerGroup bgmGroup;
 
+    [Space]
+    public AudioMixerController controller;
+
     private AudioSource currentMusic;
     private float musicFadeDuration = 1.5f;
 
@@ -23,9 +26,10 @@ public class AudioManager : MonoBehaviour
         foreach (var m in sounds.bgm)
             sounds.AddMusic(m.musicName, m.music);
 
-        PlayMusic(sounds.GetMusic("City Ruins"), 1);
+        PlayMusic(sounds.GetMusic("Significance"), 1);
 
     }
+        
     public void PlaySound(AudioClip clip, float volume = .9f)
     {
         GameObject sfxObj = new GameObject(clip.name);

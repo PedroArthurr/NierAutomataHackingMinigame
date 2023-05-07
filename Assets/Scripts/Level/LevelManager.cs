@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
 
     public Texture2D GetLevel()
     {
+        if (currentLevelName == Consts.END_GAME)
+            return null;
         return levelList.GetLevelImage(currentLevelName);
     }
 
@@ -32,13 +34,19 @@ public class LevelManager : MonoBehaviour
         Debug.Log("Waiting for reload the scene");
         yield return new WaitForSeconds(4f);
 
-        if (currentLevelName == Consts.END_GAME || PlayerPrefs.GetInt(Consts.PLAY_ONE_SHOT) == 1)
+        if (PlayerPrefs.GetInt(Consts.PLAY_ONE_SHOT) == 1)
             SceneLoader.instance.LoadScene(Consts.MENU);
+
         else
         {
             currentLevelName = levelList.GetNextLevel(currentLevelName);
+
             Debug.Log("Reloading the scene with the new level - " + currentLevelName);
-            SceneLoader.instance.ReloadScene();
+      
+            if (currentLevelName == Consts.END_GAME)
+                SceneLoader.instance.LoadScene(Consts.MENU);
+            else
+                SceneLoader.instance.ReloadScene();
         }
     }
 }

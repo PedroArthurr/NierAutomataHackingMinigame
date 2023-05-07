@@ -10,7 +10,12 @@ public class LevelGenerator : MonoBehaviour
     private void Start()
     {
         if (Application.isPlaying)
-            Generate(LevelManager.instance.GetLevel());
+        {
+            var level = LevelManager.instance.GetLevel();
+            if (level != null)
+                Generate(level);
+        }
+
     }
 
     public void Generate(Texture2D map)

@@ -40,6 +40,8 @@ MonoBehaviour:
   - audioName: game_over
     clip: {fileID: 8300000, guid: 72b25b1c54560b54c8167d22b852d481, type: 3}
   bgm:
+  - musicName: Significance
+    music: {fileID: 8300000, guid: 8fcd81eafdb3d604bb0fed2cfbdca68f, type: 3}
   - musicName: City Ruins
     music: {fileID: 8300000, guid: af376be7dc15ac5438b4c95ab6efd560, type: 3}
   - musicName: Memories of Dust

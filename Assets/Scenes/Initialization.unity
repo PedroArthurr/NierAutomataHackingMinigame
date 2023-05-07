@@ -658,6 +658,7 @@ MonoBehaviour:
     type: 2}
   bgmGroup: {fileID: -1878854847084460854, guid: ae5eb1dab05b7ff4c98e049c8c7b322e,
     type: 2}
+  controller: {fileID: 0}
 --- !u!81 &1002442171
 AudioListener:
   m_ObjectHideFlags: 0
@@ -784,7 +785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1439868211
 MonoBehaviour:
   m_ObjectHideFlags: 0
