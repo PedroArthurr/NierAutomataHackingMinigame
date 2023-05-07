@@ -39,6 +39,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4864891e6bc16be469688c4567ab0445, type: 3}
   - audioName: game_over
     clip: {fileID: 8300000, guid: 72b25b1c54560b54c8167d22b852d481, type: 3}
+  - audioName: button_select
+    clip: {fileID: 8300000, guid: aaa50093df4718b47a21e606f030cc1d, type: 3}
   bgm:
   - musicName: Significance
     music: {fileID: 8300000, guid: 8fcd81eafdb3d604bb0fed2cfbdca68f, type: 3}

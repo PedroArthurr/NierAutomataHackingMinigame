@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     public GameSounds sounds;
+    public AudioMixerGroup master;
     public AudioMixerGroup sfxGroup;
     public AudioMixerGroup bgmGroup;
 

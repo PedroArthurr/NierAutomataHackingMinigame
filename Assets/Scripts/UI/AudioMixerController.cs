@@ -1,18 +1,21 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
 
 public class AudioMixerController : MonoBehaviour
 {
-    private AudioMixerGroup sfx, bgm;
-    [SerializeField] private Slider sfxSlider, bgmSlider;
+    private AudioMixerGroup master, sfx, bgm;
+    [SerializeField] private CustomStepsSlider sfxSlider, bgmSlider;
 
     private void Start()
     {
+        master = AudioManager.instance.master;
         sfx = AudioManager.instance.sfxGroup;
         bgm = AudioManager.instance.bgmGroup;
     }
 
-    public void UpdateSfxVolume() => sfx?.audioMixer?.SetFloat(sfx.name + "Volume", Mathf.Log10(sfxSlider.value) * 20);
-    public void UpdateBgmVolume() => bgm?.audioMixer?.SetFloat(bgm.name + "Volume", Mathf.Log10(bgmSlider.value) * 20);
+    public void UpdateMasterVolume() => master.audioMixer.SetVolume(master.name + "Volume", PlayerPrefs.GetFloat(Consts.MASTER_VOLUME));
+
+    public void UpdateSfxVolume() => sfx.audioMixer.SetVolume(sfx.name + "Volume", PlayerPrefs.GetFloat(Consts.SFX_VOLUME));
+
+    public void UpdateBgmVolume() => bgm.audioMixer.SetVolume(bgm.name + "Volume", PlayerPrefs.GetFloat(Consts.BGM_VOLUME));
 }

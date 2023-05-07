@@ -29,4 +29,17 @@ public static class Enums
         Enemy = 2,
         ShieldEnemy = 3,
     }
+
+    public enum ChallengeButtonState
+    {
+        Selected = 0,
+        Unselected = 1,
+    }
+
+    public enum CustomSliderType
+    {
+        BGM = 0,
+        SFX = 1,
+        Master = 2
+    }
 }
