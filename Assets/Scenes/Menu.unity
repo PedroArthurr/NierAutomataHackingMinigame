@@ -2022,7 +2022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5706,6 +5706,7 @@ MonoBehaviour:
   squareIcon: {fileID: 974807530}
   white: {r: 0.8862745, g: 0.87058824, b: 0.8, a: 1}
   black: {r: 0.3764706, g: 0.3647059, b: 0.30588236, a: 1}
+  subText: {fileID: 403461173}
 --- !u!222 &1028142364
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6437,6 +6438,7 @@ MonoBehaviour:
   squareIcon: {fileID: 1105091488}
   white: {r: 0.8862745, g: 0.87058824, b: 0.8, a: 1}
   black: {r: 0.3764706, g: 0.3647059, b: 0.30588236, a: 1}
+  subText: {fileID: 0}
 --- !u!222 &1132643444
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6862,6 +6864,7 @@ MonoBehaviour:
   squareIcon: {fileID: 461705655}
   white: {r: 0.8862745, g: 0.87058824, b: 0.8, a: 1}
   black: {r: 0.3764706, g: 0.3647059, b: 0.30588236, a: 1}
+  subText: {fileID: 0}
 --- !u!222 &1214263798
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -9505,6 +9508,7 @@ GameObject:
   - component: {fileID: 1621888279}
   - component: {fileID: 1621888278}
   - component: {fileID: 1621888277}
+  - component: {fileID: 1621888280}
   m_Layer: 5
   m_Name: PrevButton
   m_TagString: Untagged
@@ -9626,6 +9630,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1621888275}
   m_CullTransparentMesh: 1
+--- !u!114 &1621888280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621888275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1028142363}
+          m_TargetAssemblyTypeName: SelectableMenuItem, Assembly-CSharp
+          m_MethodName: SetCurrentState
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &1635658188
 GameObject:
   m_ObjectHideFlags: 0
@@ -9902,6 +9935,7 @@ GameObject:
   - component: {fileID: 1674990196}
   - component: {fileID: 1674990195}
   - component: {fileID: 1674990194}
+  - component: {fileID: 1674990197}
   m_Layer: 5
   m_Name: NextButton
   m_TagString: Untagged
@@ -10023,6 +10057,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674990192}
   m_CullTransparentMesh: 1
+--- !u!114 &1674990197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674990192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1028142363}
+          m_TargetAssemblyTypeName: SelectableMenuItem, Assembly-CSharp
+          m_MethodName: SetCurrentState
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &1710855167
 GameObject:
   m_ObjectHideFlags: 0
@@ -13311,6 +13374,7 @@ MonoBehaviour:
   squareIcon: {fileID: 5087141951821295069}
   white: {r: 0.8862745, g: 0.87058824, b: 0.8, a: 1}
   black: {r: 0.3764706, g: 0.3647059, b: 0.30588236, a: 1}
+  subText: {fileID: 0}
 --- !u!1 &9124760788846979976
 GameObject:
   m_ObjectHideFlags: 0

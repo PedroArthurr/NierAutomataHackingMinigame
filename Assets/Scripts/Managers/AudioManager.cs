@@ -98,7 +98,6 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Trying to play the same music that is already playing.");
             PlayNextMusic();
         }
     }
@@ -126,7 +125,6 @@ public class AudioManager : MonoBehaviour
     {
        
         currentMusicIndex++;
-        print(currentMusicIndex);
         if (currentMusicIndex > sounds.bgm.Count)
         {
             currentMusicIndex = 1;

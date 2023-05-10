@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4057093673473880940}
+  - component: {fileID: -5730932481198447266}
   - component: {fileID: 4057093673473880943}
   - component: {fileID: 4057093673473880942}
   - component: {fileID: 4057093673473880929}
@@ -36,6 +37,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-5730932481198447266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057093673473880928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4886d45554577cd49bd8cda416ba6050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectGUID: 266acea8-d215-44de-a952-38dc750e707c
 --- !u!33 &4057093673473880943
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -127,7 +141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9464ca8605324c4468e2f81468b81e1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealth: 10
-  currentHealth: 0
-  speed: 5
-  wallMaterial: {fileID: 2100000, guid: 5cd93b167ed713e40a164675b5f1ff8f, type: 2}
+  health: 8
+  flashColor: {r: 0, g: 0, b: 0, a: 0}
+  flashTime: 0.05

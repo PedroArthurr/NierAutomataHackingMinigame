@@ -48,9 +48,7 @@ public class SongSelection : MonoBehaviour
             lastTrack = songs[trackIndex].musicName;
         }
         else
-        {
             lastTrack = songs[trackIndex].musicName;
-        }
 
         AudioManager.instance.PlayMusic(sounds.GetMusic(lastTrack));
         SetMenuName(lastTrack);
@@ -60,7 +58,7 @@ public class SongSelection : MonoBehaviour
 
     public void SetMenuName(string trackName)
     {
-        print(trackName);
+        Debug.Log("Playing: " + trackName);
         songName.text = trackName;
     }
 }
