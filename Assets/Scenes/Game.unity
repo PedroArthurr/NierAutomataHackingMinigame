@@ -1252,52 +1252,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e1ed0da3544e947b5c8c77407dd42e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabs:
-  - prefab: {fileID: 7569878578739013211, guid: 6ef1516337b7536488499f07716afef7,
-      type: 3}
-    color: {r: 0, g: 0, b: 0, a: 1}
-    type: 1
-    hex: 000000
-  - prefab: {fileID: 9056961167374379434, guid: f204bd7d2768b414eb8b2c7a3e4b7da4,
-      type: 3}
-    color: {r: 1, g: 1, b: 1, a: 1}
-    type: 0
-    hex: FFFFFF
-  - prefab: {fileID: 4057093673473880928, guid: 4ff9ab05416c6c244b66d8b06bb03d2d,
-      type: 3}
-    color: {r: 0.73333335, g: 0.73333335, b: 0.73333335, a: 1}
-    type: 0
-    hex: BBBBBB
-  - prefab: {fileID: 1344031795783923408, guid: a7080b7ae312a094788f60e47292555b,
-      type: 3}
-    color: {r: 0.24705882, g: 0.24705882, b: 0.24705882, a: 1}
-    type: 0
-    hex: 3F3F3F
-  - prefab: {fileID: 1180468653277307499, guid: 7b1968b63a39e1b4185343c75979af02,
-      type: 3}
-    color: {r: 1, g: 0.6, b: 0, a: 1}
-    type: 2
-    hex: FF9900
-  - prefab: {fileID: 5404011723939908363, guid: 95222955ddb4036489296caebe05797b,
-      type: 3}
-    color: {r: 1, g: 0.39124388, b: 0, a: 1}
-    type: 2
-    hex: FF6400
-  - prefab: {fileID: 8446859000448438018, guid: 50b0bb9a16e7f0341acd703a32c1db39,
-      type: 3}
-    color: {r: 0.62352943, g: 0, b: 0.89411765, a: 1}
-    type: 2
-    hex: 9F00E4
-  - prefab: {fileID: 8739318056693866347, guid: 830c0fb4e265437408c6e849471123a3,
-      type: 3}
-    color: {r: 0.8039216, g: 0, b: 0.7254902, a: 1}
-    type: 2
-    hex: CD00B9
-  - prefab: {fileID: 1208335878538034499, guid: dad19eacab6f27d4c803dbeb5b48207c,
-      type: 3}
-    color: {r: 1, g: 0.654902, b: 0.23529412, a: 1}
-    type: 3
-    hex: FFA73C
+  gamePrefabs: {fileID: 11400000, guid: cce0fb99329318a4fa9808ff417c063f, type: 2}
+  levelDataFilePath: X:/UnityProjects/GitHub/NierAutomataHackingMinigame/Assets/level2.json
 --- !u!1001 &596010701165238134
 PrefabInstance:
   m_ObjectHideFlags: 0

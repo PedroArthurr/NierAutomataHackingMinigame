@@ -1,84 +1,55 @@
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    [SerializeField] private ColorToPrefab[] prefabs;
+    [SerializeField] private GamePrefabs gamePrefabs;
+    [SerializeField] private string levelDataFilePath;
 
     private Vector3 middle;
-    private Texture2D currentMap;
 
     private void Start()
     {
         if (Application.isPlaying)
         {
-            var level = LevelManager.instance.GetLevel();
-            if (level != null)
-                Generate(level);
-        }
-
-    }
-
-    public void Generate(Texture2D map)
-    {
-        currentMap = map;
-        middle = new Vector3(map.width / 2, 0, map.height / 2);
-        for (int x = 0; x < map.width; x++)
-            for (int z = 0; z < map.height; z++)
-                GenerateTile(x, z);
-    }
-
-    private void GenerateTile(int x, int z)
-    {
-        Color pixelColor = currentMap.GetPixel(x, z);
-        if (pixelColor.a <= 0)
-            return;
-        foreach (var p in prefabs)
-        {
-            //Debug.Log(p.type + " >>> " + ColorUtility.ToHtmlStringRGB(pixelColor) + " >>> " + ColorUtility.ToHtmlStringRGB(p.color));
-            if (ColorUtility.ToHtmlStringRGB(p.color) == ColorUtility.ToHtmlStringRGB(pixelColor))
-            {
-                var position = new Vector3((int)x - middle.x, 0, (int)z - middle.z);
-                if (p.prefab != null)
-                {
-                    var i = Instantiate(p.prefab, position, Quaternion.identity);
-                    if (p.type == Enums.LevelPrefabType.Enemy)
-                        GameManager.instance.enemiesController.AddEnemy(i.GetComponent<Enemy>());
-                    else if (p.type == Enums.LevelPrefabType.ShieldEnemy)
-                        GameManager.instance.enemiesController.AddShieldEnemy(i.GetComponent<Enemy>());
-                }
-
-            }
+            Generate(levelDataFilePath);
         }
     }
-    [ContextMenu("Atualizar Cores")]
-    private void UpdateColors()
-    {
-        foreach (var p in prefabs)
-            Debug.Log(p.Hex);
-    }
-}
 
-[System.Serializable]
-public class ColorToPrefab
-{
-    public GameObject prefab;
-    public Color color;
-    public Enums.LevelPrefabType type;
-    [SerializeField] private string hex;
-    public string Hex
+    public void Generate(string levelDataFilePath)
     {
-        get
+        string json = File.ReadAllText(levelDataFilePath);
+        LevelData levelData = JsonUtility.FromJson<LevelData>(json);
+        middle = new Vector3(levelData.gridSize / 2, 0, levelData.gridSize / 2);
+
+        foreach (var o in levelData.objects)
         {
-            hex = ColorUtility.ToHtmlStringRGB(color);
-            return hex;
+            var prefab = gamePrefabs.FindObjectByGUID(o.prefabGUID);
+
+            Vector2Int rotatedPosition = new Vector2Int(o.position.y, -o.position.x);
+            Vector3 finalPosition = new Vector3(rotatedPosition.x - middle.x, 0, rotatedPosition.y + middle.z);
+
+            GenerateLevelObject(prefab, finalPosition);
         }
-        set
+    }
+
+    private void GenerateLevelObject(LevelObject objectData, Vector3 p)
+    {
+        List<LevelObject> l = new(gamePrefabs.levelObjects.Concat(gamePrefabs.enemies).Concat(gamePrefabs.player));
+
+        LevelObject levelObjectPrefab = l.Find(lo => lo.objectGUID == objectData.objectGUID);
+
+        if (levelObjectPrefab != null)
         {
-            if (ColorUtility.TryParseHtmlString(value, out Color newColor))
-            {
-                color = newColor;
-                hex = value;
-            }
+            var o = Instantiate(levelObjectPrefab, p, Quaternion.identity);
+
+            //print(o.name + " -> " + p.x + " -> " + p.z);
+        }
+        else
+        {
+            Debug.LogWarning($"No LevelObject found with GUID {objectData.objectGUID}");
         }
     }
 }
