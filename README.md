@@ -10,12 +10,10 @@ The following tools have been used for the development of this project:
 
 ## Features
 The NierAutomataHackingMinigame comes with the following features:
-- .png image level editor that enables you to create your own levels by using images whose size defines the level size, and whose pixel colors represent different elements of the game.
+- .png image level editor that allows you to create your own levels by using images whose size defines the level size, and whose pixel colors represent different elements of the game.
 
 ## Next Features and Updates
 These will be the next features and updates I will add to the game:
 - New Enemies
-- New Particles
-- Add more sounds
-- Add BGM
-- Gameplay cycle
+- Level Editor
+- Complete gameplay cycle
