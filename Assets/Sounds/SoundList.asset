@@ -68,7 +68,7 @@ MonoBehaviour:
     music: {fileID: 8300000, guid: 84feb438242399d4990312d140f8ac78, type: 3}
   - musicName: War & War
     music: {fileID: 8300000, guid: 996d31bc514f04e48adb6a76ae13ac69, type: 3}
-  - musicName: Song of the Ancients - Atonement
+  - musicName: Song of the Ancients
     music: {fileID: 8300000, guid: f56d6f3cd0b0083418e07f93f02f24a4, type: 3}
   - musicName: The Tower
     music: {fileID: 8300000, guid: f5a0f8d79a310b6499400dc9df47b249, type: 3}

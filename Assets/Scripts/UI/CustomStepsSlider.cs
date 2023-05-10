@@ -29,7 +29,28 @@ public class CustomStepsSlider : MonoBehaviour, IPointerDownHandler, IDragHandle
         totalSteps = steps.Length;
         stepSize = (maxValue - minValue) / totalSteps;
 
-        currentValue = PlayerPrefs.GetFloat(sliderType == Enums.CustomSliderType.BGM ? Consts.BGM_VOLUME : Consts.SFX_VOLUME, 1) * 10;
+        switch (sliderType)
+        {
+            case Enums.CustomSliderType.Master:
+                if (PlayerPrefs.HasKey(Consts.MASTER_VOLUME))
+                    currentValue = PlayerPrefs.GetFloat(Consts.MASTER_VOLUME) * 10;
+                else
+                    currentValue = 1;
+                break;
+            case Enums.CustomSliderType.BGM:
+                if (PlayerPrefs.HasKey(Consts.BGM_VOLUME))
+                    currentValue = PlayerPrefs.GetFloat(Consts.BGM_VOLUME) * 10;
+                else
+                    currentValue = 1;
+                break;
+            case Enums.CustomSliderType.SFX:
+                if (PlayerPrefs.HasKey(Consts.SFX_VOLUME))
+                    currentValue = PlayerPrefs.GetFloat(Consts.SFX_VOLUME) * 10;
+                else
+                    currentValue = 1;
+                break;
+        }
+
         UpdateHandlePosition();
     }
 
@@ -144,7 +165,7 @@ public class CustomStepsSlider : MonoBehaviour, IPointerDownHandler, IDragHandle
                 PlayerPrefs.SetFloat(Consts.SFX_VOLUME, NormalizedValue);
                 break;
         }
-        
+
         PlayerPrefs.Save();
         onValueChanged?.Invoke();
     }

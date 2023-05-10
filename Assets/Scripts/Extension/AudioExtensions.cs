@@ -1,5 +1,7 @@
 namespace UnityEngine.Audio
 {
+    using System;
+
     public static class AudioExtensions
     {
         /// <summary>
@@ -27,6 +29,69 @@ namespace UnityEngine.Audio
             }
 
             return 0f;
+        }
+        private static readonly string onCompleteMethodName = "OnAudioComplete";
+
+        public static void AddOnCompleteEvent(this AudioSource source, Action onCompleteAction)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (onCompleteAction == null)
+            {
+                throw new ArgumentNullException(nameof(onCompleteAction));
+            }
+
+            source.Stop();
+
+            var listener = source.gameObject.GetComponent<AudioCompletionListener>();
+            if (listener == null)
+            {
+                listener = source.gameObject.AddComponent<AudioCompletionListener>();
+                listener.OnAudioComplete += onCompleteAction;
+            }
+            else
+            {
+                listener.OnAudioComplete -= onCompleteAction;
+                listener.OnAudioComplete += onCompleteAction;
+            }
+
+            source.Play();
+        }
+
+        public static void RemoveOnCompleteEvent(this AudioSource source, Action onCompleteAction)
+        {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+
+            if (onCompleteAction == null)
+            {
+                throw new ArgumentNullException(nameof(onCompleteAction));
+            }
+
+            var listener = source.gameObject.GetComponent<AudioCompletionListener>();
+            if (listener != null)
+            {
+                listener.OnAudioComplete -= onCompleteAction;
+            }
+        }
+
+        private class AudioCompletionListener : MonoBehaviour
+        {
+            public event Action OnAudioComplete;
+
+            private void Update()
+            {
+                if (!GetComponent<AudioSource>().isPlaying)
+                {
+                    OnAudioComplete?.Invoke();
+                    Destroy(this);
+                }
+            }
         }
     }
 }
