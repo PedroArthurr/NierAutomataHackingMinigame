@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d5ca1d7e502c1419e312319bf3797f, type: 3}
+  m_Name: Game Assets
+  m_EditorClassIdentifier: 
+  levelObjects:
+  - {fileID: 3801400490034838683, guid: a7080b7ae312a094788f60e47292555b, type: 3}
+  - {fileID: -5730932481198447266, guid: 4ff9ab05416c6c244b66d8b06bb03d2d, type: 3}
+  - {fileID: -9051456385269689792, guid: f204bd7d2768b414eb8b2c7a3e4b7da4, type: 3}
+  enemies:
+  - {fileID: 7398145930099090834, guid: 7b1968b63a39e1b4185343c75979af02, type: 3}
+  - {fileID: -2177793792712251519, guid: 50b0bb9a16e7f0341acd703a32c1db39, type: 3}
+  - {fileID: -7911536456536638478, guid: 95222955ddb4036489296caebe05797b, type: 3}
+  - {fileID: 2132565848659599571, guid: 830c0fb4e265437408c6e849471123a3, type: 3}
+  - {fileID: 1590471592105947710, guid: dad19eacab6f27d4c803dbeb5b48207c, type: 3}
+  player:
+  - {fileID: 2626833993718706156, guid: 6ef1516337b7536488499f07716afef7, type: 3}

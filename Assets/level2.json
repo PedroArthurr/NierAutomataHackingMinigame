@@ -11,13 +11,6 @@
         {
             "position": {
                 "x": 0,
-                "y": 1
-            },
-            "prefabGUID": "e92e0380-c90a-4baf-88f5-ba7775dedfdb"
-        },
-        {
-            "position": {
-                "x": 0,
                 "y": 2
             },
             "prefabGUID": "e92e0380-c90a-4baf-88f5-ba7775dedfdb"
@@ -25,21 +18,7 @@
         {
             "position": {
                 "x": 0,
-                "y": 3
-            },
-            "prefabGUID": "e92e0380-c90a-4baf-88f5-ba7775dedfdb"
-        },
-        {
-            "position": {
-                "x": 0,
                 "y": 4
-            },
-            "prefabGUID": "e92e0380-c90a-4baf-88f5-ba7775dedfdb"
-        },
-        {
-            "position": {
-                "x": 0,
-                "y": 5
             },
             "prefabGUID": "e92e0380-c90a-4baf-88f5-ba7775dedfdb"
         },
@@ -67,27 +46,6 @@
         {
             "position": {
                 "x": 1,
-                "y": 2
-            },
-            "prefabGUID": "5fbee84d-9003-46a8-b7f6-2df80b72907a"
-        },
-        {
-            "position": {
-                "x": 1,
-                "y": 3
-            },
-            "prefabGUID": "847ad203-7758-43b5-81ea-a49e512a69b4"
-        },
-        {
-            "position": {
-                "x": 1,
-                "y": 4
-            },
-            "prefabGUID": "c841917e-ad9c-4a70-a4ff-aaba97fc4343"
-        },
-        {
-            "position": {
-                "x": 1,
                 "y": 5
             },
             "prefabGUID": "7e6a1dac-8ab8-4854-8beb-fada65bbe445"
@@ -109,34 +67,6 @@
         {
             "position": {
                 "x": 2,
-                "y": 1
-            },
-            "prefabGUID": "334d5f7a-f565-4662-bb94-b8c0d767841c"
-        },
-        {
-            "position": {
-                "x": 2,
-                "y": 2
-            },
-            "prefabGUID": "334d5f7a-f565-4662-bb94-b8c0d767841c"
-        },
-        {
-            "position": {
-                "x": 2,
-                "y": 4
-            },
-            "prefabGUID": "334d5f7a-f565-4662-bb94-b8c0d767841c"
-        },
-        {
-            "position": {
-                "x": 2,
-                "y": 5
-            },
-            "prefabGUID": "334d5f7a-f565-4662-bb94-b8c0d767841c"
-        },
-        {
-            "position": {
-                "x": 2,
                 "y": 6
             },
             "prefabGUID": "e92e0380-c90a-4baf-88f5-ba7775dedfdb"
@@ -147,27 +77,6 @@
                 "y": 0
             },
             "prefabGUID": "e92e0380-c90a-4baf-88f5-ba7775dedfdb"
-        },
-        {
-            "position": {
-                "x": 3,
-                "y": 2
-            },
-            "prefabGUID": "266acea8-d215-44de-a952-38dc750e707c"
-        },
-        {
-            "position": {
-                "x": 3,
-                "y": 3
-            },
-            "prefabGUID": "4663fe96-c521-4dfc-9efc-ec00439dcf34"
-        },
-        {
-            "position": {
-                "x": 3,
-                "y": 4
-            },
-            "prefabGUID": "266acea8-d215-44de-a952-38dc750e707c"
         },
         {
             "position": {
@@ -194,13 +103,6 @@
             "position": {
                 "x": 4,
                 "y": 2
-            },
-            "prefabGUID": "334d5f7a-f565-4662-bb94-b8c0d767841c"
-        },
-        {
-            "position": {
-                "x": 4,
-                "y": 3
             },
             "prefabGUID": "334d5f7a-f565-4662-bb94-b8c0d767841c"
         },
