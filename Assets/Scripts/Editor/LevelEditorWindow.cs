@@ -23,7 +23,8 @@ public class LevelEditorWindow : EditorWindow
     [MenuItem("Window/Level Editor")]
     public static void ShowWindow()
     {
-        GetWindow(typeof(LevelEditorWindow));
+        var window = GetWindow(typeof(LevelEditorWindow));
+        //window.Close();
     }
     #endregion
 
@@ -304,9 +305,12 @@ public class LevelEditorWindow : EditorWindow
         }
 
         string json = JsonUtility.ToJson(levelData, true);
-        System.IO.File.WriteAllText(Application.dataPath + "/" + saveFileName, json);
+        if (!System.IO.Directory.Exists(Application.persistentDataPath + "/GameLevels/"))
+            System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/GameLevels/");
 
-        string path = Application.dataPath + "/" + saveFileName;
+        System.IO.File.WriteAllText(Application.persistentDataPath + "/GameLevels/" + saveFileName, json);
+
+        string path = Application.persistentDataPath + "/GameLevels/" + saveFileName;
         System.IO.File.WriteAllText(path, json);
 
         Debug.Log("Saved level to: " + path);
@@ -315,7 +319,7 @@ public class LevelEditorWindow : EditorWindow
 
     private void LoadLevel()
     {
-        string filePath = Application.dataPath + "/" + loadFileName;
+        string filePath = Application.persistentDataPath + "/GameLevels/" + loadFileName;
         if (System.IO.File.Exists(filePath))
         {
             ClearLevel();

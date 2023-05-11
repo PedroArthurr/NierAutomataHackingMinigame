@@ -13,5 +13,6 @@ public class LevelData
 public class LevelPrefab
 {
     public Vector2Int position;
+    [ShowOnly]
     public string prefabGUID;
 }

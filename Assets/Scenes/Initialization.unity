@@ -557,8 +557,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e1037afecb3844a9ac6e44145168b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelList: {fileID: 11400000, guid: dd41d2d4371254d449a67f6b56abbe14, type: 2}
-  currentLevelName: 
+  levelNames:
+  - HACKING GAME #01
+  - HACKING GAME #02
+  - HACKING GAME #03
+  levelsList: []
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,6 +662,7 @@ MonoBehaviour:
     type: 2}
   bgmGroup: {fileID: -1878854847084460854, guid: ae5eb1dab05b7ff4c98e049c8c7b322e,
     type: 2}
+  currentMusicIndex: 0
   controller: {fileID: 0}
 --- !u!81 &1002442171
 AudioListener:

@@ -252,10 +252,11 @@ MonoBehaviour:
   - {fileID: 4051129911496877613}
   - {fileID: 4051129911545458032}
   challengeName: {fileID: 4051129910928283656}
-  newTag: {fileID: 4051129910940253578}
   squareIcon: {fileID: 4051129912177853064}
   white: {r: 0.8862745, g: 0.87058824, b: 0.8, a: 1}
   black: {r: 0.3764706, g: 0.3647059, b: 0.30588236, a: 1}
+  subText: {fileID: 0}
+  button: {fileID: 1572504801}
 --- !u!1 &4051129910928283654
 GameObject:
   m_ObjectHideFlags: 0

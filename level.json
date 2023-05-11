@@ -1,0 +1,12 @@
+{
+    "gridSize": 30,
+    "objects": [
+        {
+            "position": {
+                "x": 11,
+                "y": 19
+            },
+            "prefabGUID": "4663fe96-c521-4dfc-9efc-ec00439dcf34"
+        }
+    ]
+}

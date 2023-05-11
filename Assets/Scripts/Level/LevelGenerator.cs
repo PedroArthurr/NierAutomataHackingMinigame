@@ -6,7 +6,6 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     [SerializeField] private GamePrefabs gamePrefabs;
-    [SerializeField] private string levelDataFilePath;
 
     private Vector3 middle;
 
@@ -14,14 +13,13 @@ public class LevelGenerator : MonoBehaviour
     {
         if (Application.isPlaying)
         {
-            Generate(levelDataFilePath);
+            Generate();
         }
     }
 
-    public void Generate(string levelDataFilePath)
+    public void Generate()
     {
-        string json = File.ReadAllText(levelDataFilePath);
-        LevelData levelData = JsonUtility.FromJson<LevelData>(json);
+        LevelData levelData = LevelManager.instance.CurrentLevel;
         middle = new Vector3(levelData.gridSize / 2, 0, levelData.gridSize / 2);
 
         foreach (var o in levelData.objects)
@@ -43,7 +41,7 @@ public class LevelGenerator : MonoBehaviour
 
         if (levelObjectPrefab != null)
         {
-            var o = Instantiate(levelObjectPrefab, p, Quaternion.identity);
+            /*var o = */Instantiate(levelObjectPrefab, p, Quaternion.identity);
 
             //print(o.name + " -> " + p.x + " -> " + p.z);
         }

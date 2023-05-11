@@ -15,6 +15,8 @@ public class SelectableMenuItem : MonoBehaviour
 
     [Header("Optional")]
     [SerializeField] private TMP_Text subText;
+    [SerializeField] private Button button;
+
     private AudioClip selection;
 
     private void Start()
@@ -25,6 +27,12 @@ public class SelectableMenuItem : MonoBehaviour
     {
         state = selected ? Enums.ChallengeButtonState.Selected : Enums.ChallengeButtonState.Unselected;
         SetUI();
+    }
+
+    public void SetButton(string name, System.Action action)
+    {
+        challengeName.text = name;
+        button.onClick.AddListener(()=> action());
     }
 
     private void SetUI()
