@@ -24,13 +24,11 @@ public class Bullet : MonoBehaviour
 
     void Start() => rb.velocity = transform.forward * speed;
 
-    void Update()
-    {
-        if (!GetComponent<Renderer>().isVisible)
-        {
-            Destroy(gameObject);
-        }
-    }
+    //void Update()
+    //{
+    //    if (!GetComponent<Renderer>().isVisible)
+    //        Destroy(gameObject);
+    //}
 
     public IEnumerator DelayedDestroy()
     {

@@ -1253,7 +1253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gamePrefabs: {fileID: 11400000, guid: cce0fb99329318a4fa9808ff417c063f, type: 2}
-  levelDataFilePath: X:/UnityProjects/GitHub/NierAutomataHackingMinigame/Assets/level2.json
 --- !u!1001 &596010701165238134
 PrefabInstance:
   m_ObjectHideFlags: 0

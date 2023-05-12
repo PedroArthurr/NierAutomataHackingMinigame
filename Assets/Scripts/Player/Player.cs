@@ -45,8 +45,9 @@ public class Player : MonoBehaviour, IDamageable
 
     public void TakeDamage()
     {
-        if (!canReceiveDamage)
+        if (!canReceiveDamage || currentHealth <= -1)
             return;
+
         DestroyShield();
         currentHealth -= 1;
         if (CurrentHealth < 0)
