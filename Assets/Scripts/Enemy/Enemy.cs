@@ -149,5 +149,4 @@ public class Enemy : MonoBehaviour, IDamageable
         if (shield != null)
             shield.Remove();
     }
-
 }

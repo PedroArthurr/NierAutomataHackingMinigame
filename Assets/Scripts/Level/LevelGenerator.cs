@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -41,8 +40,15 @@ public class LevelGenerator : MonoBehaviour
 
         if (levelObjectPrefab != null)
         {
-            /*var o = */Instantiate(levelObjectPrefab, p, Quaternion.identity);
-
+            var o = Instantiate(levelObjectPrefab, p, Quaternion.identity);
+            if (o.GetComponent<Enemy>())
+            {
+                var e = o.GetComponent<Enemy>();
+                if (e.GetComponentInChildren<EnemyShield>())
+                    GameManager.instance.enemiesController.AddShieldEnemy(e);
+                else
+                    GameManager.instance.enemiesController.AddEnemy(e);
+            }
             //print(o.name + " -> " + p.x + " -> " + p.z);
         }
         else
