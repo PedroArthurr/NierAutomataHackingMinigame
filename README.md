@@ -10,10 +10,14 @@ The following tools have been used for the development of this project:
 
 ## Features
 The NierAutomataHackingMinigame comes with the following features:
-- .png image level editor that allows you to create your own levels by using images whose size defines the level size, and whose pixel colors represent different elements of the game.
+- Level editor using Unity's EditorWindow, the levels are saved in a JSON file.
+- Song selection.
+- Volume controller
 
 ## Next Features and Updates
 These will be the next features and updates I will add to the game:
 - New Enemies
-- Level Editor
 - Complete gameplay cycle
+
+## Warning
+- Since the songs are copyrighted I'm not uploading it here, if you clone the project you'll need to add them by yourself.
