@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class ShooterEnemy : FollowPlayerEnemy
 {
-    [SerializeField] private Enums.ShootingBehaviour shootingBehaviour;
-    [SerializeField] private Enums.BulletTypes bulletType;
-    [SerializeField] private GameObject[] bulletPrefabs;
-    [SerializeField] private float shootInterval = 1f;
+    [SerializeField] protected Enums.ShootingBehaviour shootingBehaviour;
+    [SerializeField] protected Enums.BulletTypes bulletType;
+    [SerializeField] protected GameObject[] bulletPrefabs;
+    [SerializeField] protected float shootInterval = 1f;
 
-    private float lastShootTime = 0f;
+    protected float lastShootTime = 0f;
 
     protected override void Shoot()
     {
@@ -34,7 +34,6 @@ public class ShooterEnemy : FollowPlayerEnemy
                         Instantiate(bulletPrefabs[(int)bulletType], transform.position, rotation);
                     }
                     lastShootTime = Time.time;
-
                     break;
             }
             AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shotSound), .1f);

@@ -7,6 +7,7 @@ using UnityEngine.Serialization;
 public class Bullet : MonoBehaviour
 {
     public float speed = 10f;
+    public Vector3 initialVelocity = Vector3.zero;
     [FormerlySerializedAs("ignoreLayers")]
     public LayerMask interactionLayers;
 
@@ -22,7 +23,7 @@ public class Bullet : MonoBehaviour
             damageDealer = GetComponent<DamageDealer>();
     }
 
-    void Start() => rb.velocity = transform.forward * speed;
+    void Start() => rb.velocity = transform.forward * speed + initialVelocity;
 
     //void Update()
     //{

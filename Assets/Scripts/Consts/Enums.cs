@@ -13,12 +13,14 @@ public static class Enums
         SEMIAUTO,
         MACHINEGUN,
         SHOTGUN,
+        ORBIT_SHOOTING
     }
 
     public enum BulletTypes
     {
         PURPLE,
         ORANGE,
+        MIXED
     }
     #endregion Enemy
 

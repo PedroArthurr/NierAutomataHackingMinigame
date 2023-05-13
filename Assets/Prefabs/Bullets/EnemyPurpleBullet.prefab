@@ -130,9 +130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  orbitForce: 1
   interactionLayers:
     serializedVersion: 2
     m_Bits: 19264
+  orbitCenter: {x: 0, y: 0, z: 0}
   rb: {fileID: 1447935169643294837}
   damageDealer: {fileID: 0}
   destructable: 0
@@ -152,6 +154,12 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 8
+  OnDamageableEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamageableExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6673999214120395172
 GameObject:
   m_ObjectHideFlags: 0

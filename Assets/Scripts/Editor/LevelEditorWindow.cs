@@ -14,8 +14,8 @@ public class LevelEditorWindow : EditorWindow
     private enum ObjectCategory { LevelObjects, Enemies, Player }
     private ObjectCategory selectedCategory;
     private List<List<GameObject>> levelGrid;
-    private string saveFileName = "level.json";
-    private string loadFileName = "level.json";
+    private string saveFileName = "HACKING GAME #01.json";
+    private string loadFileName = "HACKING GAME #01.json";
     private float cellSize;
     #endregion
 
@@ -305,12 +305,12 @@ public class LevelEditorWindow : EditorWindow
         }
 
         string json = JsonUtility.ToJson(levelData, true);
-        if (!System.IO.Directory.Exists(Application.persistentDataPath + "/GameLevels/"))
-            System.IO.Directory.CreateDirectory(Application.persistentDataPath + "/GameLevels/");
+        if (!System.IO.Directory.Exists(Application.dataPath + "/GameLevels/"))
+            System.IO.Directory.CreateDirectory(Application.dataPath + "/GameLevels/");
 
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/GameLevels/" + saveFileName, json);
+        System.IO.File.WriteAllText(Application.dataPath + "/GameLevels/" + saveFileName, json);
 
-        string path = Application.persistentDataPath + "/GameLevels/" + saveFileName;
+        string path = Application.dataPath + "/GameLevels/" + saveFileName;
         System.IO.File.WriteAllText(path, json);
 
         Debug.Log("Saved level to: " + path);
@@ -319,7 +319,7 @@ public class LevelEditorWindow : EditorWindow
 
     private void LoadLevel()
     {
-        string filePath = Application.persistentDataPath + "/GameLevels/" + loadFileName;
+        string filePath = Application.dataPath + "/GameLevels/" + loadFileName;
         if (System.IO.File.Exists(filePath))
         {
             ClearLevel();
