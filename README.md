@@ -21,3 +21,9 @@ These will be the next features and updates I will add to the game:
 
 ## Warning
 - Since the songs are copyrighted I'm not uploading it here, if you clone the project you'll need to add them by yourself.
+
+## Gameplay
+Keyboard and mouse commands:
+- W/A/S/D - Player movement
+- Mouse movement - Player aiming
+- Left Mouse Button - Player shooting
