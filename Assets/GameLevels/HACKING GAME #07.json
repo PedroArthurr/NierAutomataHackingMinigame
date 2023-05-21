@@ -2881,6 +2881,13 @@
         {
             "position": {
                 "x": 20,
+                "y": 39
+            },
+            "prefabGUID": "1d094977-dc6e-4871-b20b-0291527a31fc"
+        },
+        {
+            "position": {
+                "x": 20,
                 "y": 43
             },
             "prefabGUID": "334d5f7a-f565-4662-bb94-b8c0d767841c"
