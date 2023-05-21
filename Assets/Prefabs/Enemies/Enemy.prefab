@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGUID: 004e9bf7-3631-42aa-9bb8-a5a874349b30
+  position: {x: 0, y: 0}
 --- !u!33 &2262154484966515635
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -143,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 7
   speed: 2
+  rotationSpeed: 0
   damageParticle: {fileID: 4314545086881739814, guid: 3ae36491a6766eb42ae82a3e573d03d4,
     type: 3}
   deathParticle: {fileID: 3666576321729355769, guid: b2058387a573f7745b6595ba7b0ddf0f,
@@ -159,6 +161,10 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 9216
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  wallSlowdownMultiplier: 0.1
   shootingBehaviour: 0
   bulletType: 1
   bulletPrefabs:

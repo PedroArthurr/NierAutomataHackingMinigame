@@ -20,7 +20,7 @@ public class Menu : MonoBehaviour
     public void StartGame(LevelData level)
     {
         LevelManager.instance.CurrentLevel = level;
-        AudioManager.instance.PlayMusicCrossfade(AudioManager.instance.sounds.GetMusic("Amusement Park"));
+        AudioManager.instance.PlayMusicCrossfade(AudioManager.instance.sounds.GetMusic(AudioManager.instance.GetRandomMusicName()));
         PlayerPrefs.SetInt(Consts.PLAY_ONE_SHOT, 0);
         SceneLoader.instance.LoadScene(Consts.GAME);
     }

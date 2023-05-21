@@ -20,16 +20,17 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         string filePath = Application.dataPath + "/GameLevels/";
-        foreach(string n in LevelNames)
+        foreach (string n in LevelNames)
         {
             string json = System.IO.File.ReadAllText(filePath + n + ".json");
             LevelsList.Add(JsonUtility.FromJson<LevelData>(json));
         }
 
-        if (!PlayerPrefs.HasKey(Consts.CURRENT_LEVEL))
-            currentLevelName = "HACKING GAME #01";
-        else
-            currentLevelName = PlayerPrefs.GetString(Consts.CURRENT_LEVEL);
+        currentLevelName = "HACKING GAME #01";
+        //if (!PlayerPrefs.HasKey(Consts.CURRENT_LEVEL))
+        //    currentLevelName = "HACKING GAME #01";
+        //else
+        //    currentLevelName = PlayerPrefs.GetString(Consts.CURRENT_LEVEL);
     }
 
     public IEnumerator NextLevel()
@@ -46,19 +47,13 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
-            int currentLevelIndex = levelNames.IndexOf(currentLevelName);
-            if (currentLevelIndex < levelNames.Count - 1)
-            {
-                currentLevelIndex++;
-                currentLevelName = levelNames[currentLevelIndex];
-                CurrentLevel = levelsList[currentLevelIndex];
-                Debug.Log("Reloading the scene with the new level - " + currentLevelName);
-                SceneLoader.instance.ReloadScene();
-            }
-            else
-            {
-                SceneLoader.instance.LoadScene(Consts.MENU);
-            }
+            int currentLevelIndex = System.Array.IndexOf(levelNames.ToArray(), currentLevelName);
+            int nextLevelIndex = (currentLevelIndex + 1) % levelNames.ToArray().Length;
+            currentLevelName = levelNames[nextLevelIndex];
+            CurrentLevel = levelsList[nextLevelIndex];
+            
+            Debug.Log("Reloading the scene with the new level - " + currentLevelName);
+            SceneLoader.instance.ReloadScene();
         }
     }
 }

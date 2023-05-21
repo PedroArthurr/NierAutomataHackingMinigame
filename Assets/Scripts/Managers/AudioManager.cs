@@ -28,7 +28,7 @@ public class AudioManager : MonoBehaviour
         foreach (var m in sounds.bgm)
             sounds.AddMusic(m.musicName, m.music);
 
-        //PlayMusic(sounds.GetMusic("a"));
+        //Menu
         PlayMusic(sounds.GetMusic("Significance"));
     }
 
@@ -121,7 +121,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayNextMusic(float volume = 1f)
     {
-       
+
         currentMusicIndex++;
         if (currentMusicIndex > sounds.bgm.Count)
         {
@@ -139,4 +139,17 @@ public class AudioManager : MonoBehaviour
         PlayMusicCrossfade(nextClip, volume);
     }
 
+    public string GetRandomMusicName()
+    {
+        string musicName = string.Empty;
+
+        do
+        {
+            int randomIndex = Random.Range(0, sounds.bgm.Count);
+            musicName = sounds.bgm[randomIndex].musicName;
+        } 
+        while (musicName == "Significance");
+
+        return musicName;
+    }
 }

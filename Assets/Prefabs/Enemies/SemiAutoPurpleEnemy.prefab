@@ -161,6 +161,10 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 9216
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  wallSlowdownMultiplier: 0.1
   shootingBehaviour: 0
   bulletType: 0
   bulletPrefabs:

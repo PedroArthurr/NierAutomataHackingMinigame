@@ -396,6 +396,7 @@ MonoBehaviour:
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 9216
+  wallSlowdownMultiplier: 0.1
   shootingBehaviour: 0
   bulletType: 1
   bulletPrefabs:
@@ -409,7 +410,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2498760939129204249}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4438b07253386b94291e8e91c61a7c89, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.59
@@ -423,7 +424,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2498760939129204249}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 4438b07253386b94291e8e91c61a7c89, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.47
@@ -443,8 +444,8 @@ GameObject:
   - component: {fileID: 833647736072614009}
   - component: {fileID: 8772012143930082478}
   - component: {fileID: 1908278507687842687}
-  - component: {fileID: 3305435408722277569}
-  m_Layer: 8
+  - component: {fileID: 6253851426069222811}
+  m_Layer: 16
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -760,16 +761,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8516816075786747271}
   m_Mesh: {fileID: 0}
---- !u!114 &3305435408722277569
-MonoBehaviour:
+--- !u!136 &6253851426069222811
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8516816075786747271}
+  m_Material: {fileID: 13400000, guid: 4438b07253386b94291e8e91c61a7c89, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57444c075000242ea99e263cee940de2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manageVisibility: 0
+  m_Radius: 0.43
+  m_Height: 1.35
+  m_Direction: 1
+  m_Center: {x: 0.0009452104, y: -0.010235175, z: -0.17}

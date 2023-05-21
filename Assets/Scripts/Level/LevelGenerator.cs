@@ -10,10 +10,15 @@ public class LevelGenerator : MonoBehaviour
 
     private void Start()
     {
-        if (Application.isPlaying)
+        int playRandomSong = Random.Range(0, 100);
+        if (playRandomSong > 70)
         {
-            Generate();
+            Debug.Log("Playing new song");
+            AudioManager.instance.PlayMusicCrossfade(AudioManager.instance.sounds.GetMusic(AudioManager.instance.GetRandomMusicName()));
         }
+
+        if (Application.isPlaying)
+            Generate();
     }
 
     public void Generate()

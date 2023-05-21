@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SongSelection : MonoBehaviour
 {
@@ -8,28 +9,43 @@ public class SongSelection : MonoBehaviour
     private List<BGM> songs = new();
     private GameSounds sounds;
     private string lastTrack;
-    private int trackIndex;
+    private int trackIndex = -1;
 
     private void Start()
     {
         sounds = AudioManager.instance.sounds;
         songs = AudioManager.instance.sounds.bgm;
-        lastTrack = songs[0].musicName;
-        print(lastTrack);
-        trackIndex = 0;
-        //Next();
+        if (!IsAudioGroupPlaying(AudioManager.instance.bgmGroup))
+            Next();
+    }
+
+    private bool IsAudioGroupPlaying(AudioMixerGroup group)
+    {
+        if (group == null)
+            return false;
+
+        AudioSource[] allAudioSources = FindObjectsOfType<AudioSource>();
+        foreach (AudioSource audioSource in allAudioSources)
+        {
+            if (audioSource.outputAudioMixerGroup == group && audioSource.isPlaying)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public void Next()
     {
         trackIndex++;
-        if(trackIndex < songs.Count)
+        if (trackIndex < songs.Count)
         {
             lastTrack = songs[trackIndex].musicName;
             AudioManager.instance.PlayMusic(sounds.GetMusic(lastTrack));
             SetMenuName(lastTrack);
         }
-        else if(trackIndex > songs.Count) 
+        else if (trackIndex > songs.Count)
         {
             trackIndex = -1;
             Next();
