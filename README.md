@@ -26,4 +26,4 @@ These will be the next features and updates I will add to the game:
 Keyboard and mouse commands:
 - W/A/S/D - Player movement
 - Mouse movement - Player aiming
-- Left Mouse - Player shooting
+- Left Mouse Button - Player shooting
