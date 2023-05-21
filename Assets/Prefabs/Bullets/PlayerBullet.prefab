@@ -129,9 +129,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  ignoreLayers:
+  initialVelocity: {x: 0, y: 0, z: 0}
+  interactionLayers:
     serializedVersion: 2
-    m_Bits: 9472
+    m_Bits: 75008
   rb: {fileID: 6278009714821695838}
   damageDealer: {fileID: 0}
   collisionParticle: {fileID: 4434345959307195590, guid: 4f093f1967c98e4499ea31a975b6dc57,
@@ -152,3 +153,9 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 8448
+  OnDamageableEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamageableExit:
+    m_PersistentCalls:
+      m_Calls: []

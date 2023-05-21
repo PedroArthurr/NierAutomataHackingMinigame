@@ -1,9 +1,7 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class FollowPlayerEnemy : Enemy
 {
-    
     [SerializeField] private Transform playerTransform;
     [SerializeField] private float stoppingDistance = 1.5f;
     [SerializeField] private LayerMask obstacleLayers;
@@ -16,6 +14,10 @@ public class FollowPlayerEnemy : Enemy
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
+        Vector3 targetPos = new(PlayerTransform.position.x, transform.position.y, PlayerTransform.position.z);
+        Vector3 direction = (targetPos - transform.position);
+        LookAtPlayer(direction);
     }
 
     protected override void Move()
@@ -28,19 +30,27 @@ public class FollowPlayerEnemy : Enemy
 
         if (distanceToTarget > stoppingDistance)
         {
-            // calcula a direção do movimento
             moveDirection = (targetPos - transform.position).normalized;
 
-            // cria um raio para verificar colisões
-            if (Physics.Raycast(transform.position, moveDirection, out RaycastHit hit, 0.5f, obstacleLayers))
-            {
-                // se o raio atingir um obstáculo, ajusta a direção do movimento
+            if (Physics.Raycast(transform.position, moveDirection, out RaycastHit hit, 1f, obstacleLayers))
                 moveDirection = Vector3.Reflect(moveDirection, hit.normal);
-            }
 
-            // move o objeto na direção calculada
-            transform.position += Speed * Time.deltaTime * moveDirection;
+            transform.position += speed * Time.deltaTime * moveDirection;
+
         }
+        Vector3 direction = (targetPos - transform.position);
+        direction.y = 0;
+        Quaternion toRotation = Quaternion.LookRotation(direction);
+        if (rotationSpeed != 0)
+            transform.rotation = Quaternion.Slerp(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+        else
+            LookAtPlayer(direction);
+
     }
 
+    private void LookAtPlayer(Vector3 direction)
+    {
+        Quaternion rotation = Quaternion.LookRotation(direction);
+        transform.rotation = rotation;
+    }
 }

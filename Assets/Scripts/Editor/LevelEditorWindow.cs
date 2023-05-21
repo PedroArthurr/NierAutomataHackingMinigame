@@ -20,7 +20,7 @@ public class LevelEditorWindow : EditorWindow
     #endregion
 
     #region Window Setup
-    [MenuItem("Window/Level Editor")]
+    [MenuItem("Tools/Level Editor")]
     public static void ShowWindow()
     {
         var window = GetWindow(typeof(LevelEditorWindow));

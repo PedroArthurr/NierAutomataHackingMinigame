@@ -129,12 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  initialVelocity: {x: 0, y: 0, z: 0}
   interactionLayers:
     serializedVersion: 2
     m_Bits: 17216
   rb: {fileID: 5679882468210596149}
-  damageDealer: {fileID: 6013420455142502511, guid: 6cf2c8e9542ba6649a500371626d7720,
-    type: 3}
+  damageDealer: {fileID: 4690917623162875058}
   destructable: 1
 --- !u!114 &4690917623162875058
 MonoBehaviour:
@@ -152,3 +152,9 @@ MonoBehaviour:
   targetLayers:
     serializedVersion: 2
     m_Bits: 8
+  OnDamageableEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamageableExit:
+    m_PersistentCalls:
+      m_Calls: []

@@ -8,7 +8,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("General Settings")]
     [SerializeField] private int baseHealth = 10;
 
-    [SerializeField] private float speed = 5f;
+    [SerializeField] protected float speed = 5f;
+    [SerializeField] protected float rotationSpeed = 0f;
 
     [Header("References")]
     [SerializeField] private GameObject damageParticle;
@@ -42,7 +43,6 @@ public class Enemy : MonoBehaviour, IDamageable
     protected Rigidbody rb;
 
     public int BaseHealth { get => baseHealth; set => baseHealth = value; }
-    public float Speed { get => speed; }
     public Enums.EnemyType Type { get => type; }
 
     protected virtual void Start()

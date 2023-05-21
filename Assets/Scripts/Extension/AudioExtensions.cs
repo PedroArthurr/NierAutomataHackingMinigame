@@ -30,7 +30,7 @@ namespace UnityEngine.Audio
 
             return 0f;
         }
-        private static readonly string onCompleteMethodName = "OnAudioComplete";
+        //private static readonly string onCompleteMethodName = "OnAudioComplete";
 
         public static void AddOnCompleteEvent(this AudioSource source, Action onCompleteAction)
         {

@@ -130,13 +130,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  orbitForce: 1
+  initialVelocity: {x: 0, y: 0, z: 0}
   interactionLayers:
     serializedVersion: 2
     m_Bits: 19264
-  orbitCenter: {x: 0, y: 0, z: 0}
   rb: {fileID: 1447935169643294837}
-  damageDealer: {fileID: 0}
+  damageDealer: {fileID: 2005116575785764338}
   destructable: 0
 --- !u!114 &2005116575785764338
 MonoBehaviour:

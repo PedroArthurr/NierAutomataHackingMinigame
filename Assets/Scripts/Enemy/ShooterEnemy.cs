@@ -36,7 +36,7 @@ public class ShooterEnemy : FollowPlayerEnemy
                     lastShootTime = Time.time;
                     break;
             }
-            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shotSound), .1f);
+            AudioManager.instance.PlaySound(AudioManager.instance.sounds.GetAudioClip(shotSound), .05f);
         }
     }
 }

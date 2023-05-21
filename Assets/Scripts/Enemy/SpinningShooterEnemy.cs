@@ -5,7 +5,7 @@ public class SpinningShooterEnemy : ShooterEnemy
 {
     [SerializeField] protected MuzzleSpinner muzzleSpinner;
     [SerializeField] private List<Transform> muzzles = new();
-    private Enums.BulletTypes currentBulletType = Enums.BulletTypes.PURPLE;
+    //private Enums.BulletTypes currentBulletType = Enums.BulletTypes.PURPLE;
     public List<Transform> Muzzles { set => muzzles = value; }
 
     protected override void Shoot()

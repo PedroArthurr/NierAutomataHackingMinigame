@@ -18,8 +18,6 @@ public class AudioManager : MonoBehaviour
     private AudioSource currentMusic;
     private float musicFadeDuration = 1.5f;
 
-    public delegate void MenuNameEventHandler();
-    public static event MenuNameEventHandler OnMusicEnd;
     void Awake() => instance = this;
 
     private void Start()

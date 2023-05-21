@@ -144,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealth: 7
   speed: 2
+  rotationSpeed: 0
   damageParticle: {fileID: 4314545086881739814, guid: 3ae36491a6766eb42ae82a3e573d03d4,
     type: 3}
   deathParticle: {fileID: 3666576321729355769, guid: b2058387a573f7745b6595ba7b0ddf0f,

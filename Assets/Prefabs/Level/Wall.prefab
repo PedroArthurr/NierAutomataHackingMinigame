@@ -49,6 +49,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectGUID: e92e0380-c90a-4baf-88f5-ba7775dedfdb
+  position: {x: 0, y: 0}
 --- !u!33 &9056961167374379429
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -127,4 +128,4 @@ Rigidbody:
   m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1

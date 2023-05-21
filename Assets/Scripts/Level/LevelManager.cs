@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        string filePath = Application.persistentDataPath + "/GameLevels/";
+        string filePath = Application.dataPath + "/GameLevels/";
         foreach(string n in LevelNames)
         {
             string json = System.IO.File.ReadAllText(filePath + n + ".json");
@@ -30,8 +30,6 @@ public class LevelManager : MonoBehaviour
             currentLevelName = "HACKING GAME #01";
         else
             currentLevelName = PlayerPrefs.GetString(Consts.CURRENT_LEVEL);
-
-        print(currentLevelName);
     }
 
     public IEnumerator NextLevel()
